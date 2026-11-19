@@ -1,0 +1,14 @@
+# Guest checkout needs create-order to accept requests without a signed-in customer.
+# The function performs server-side validation; configure rate limiting / bot protection
+# and restrict ALLOWED_ORIGIN before exposing it publicly.
+[functions.create-order]
+verify_jwt = false
+
+# The webhook is verified using Meta's GET challenge and must additionally verify
+# X-Hub-Signature-256 before production traffic is accepted.
+[functions.whatsapp-webhook]
+verify_jwt = false
+
+# send-order-notification still requires an internal shared secret header.
+[functions.send-order-notification]
+verify_jwt = false
