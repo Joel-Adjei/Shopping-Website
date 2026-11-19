@@ -176,7 +176,7 @@ function AdminSettingsPage() {
     <div className="mx-auto my-8 max-w-[1000px] sm:my-10 lg:my-12">
       <div>
         <span className={eyebrow}>SSC / SETTINGS</span>
-        <h1 className="mb-2 mt-4 font-serif text-[clamp(2.2rem,4vw,3.2rem)] font-normal leading-[1.05] tracking-[-0.04em] text-navy-900">
+        <h1 className="mb-2 mt-4 font-serif text-[clamp(2.2rem,4vw,3.2rem)] font-semibold leading-[1.05] tracking-[-0.04em] text-navy-900">
           Store <em className={accentText}>details.</em>
         </h1>
         <p className="max-w-[440px] text-[11px] leading-relaxed text-navy-900/55">
@@ -190,7 +190,7 @@ function AdminSettingsPage() {
             <Settings2 size={16} />
           </span>
           <div>
-            <h2 className="font-serif text-[23px] font-normal text-navy-900">Contact details</h2>
+            <h2 className="font-serif text-[23px] font-semibold text-navy-900">Contact details</h2>
             <p className="mt-1 text-[10px] leading-relaxed text-navy-900/50">
               Shown in the footer, the About page and the checkout WhatsApp handoff.
             </p>
@@ -292,7 +292,7 @@ function AdminSettingsPage() {
               <Tags size={16} />
             </span>
             <div>
-              <h2 className="font-serif text-[23px] font-normal text-navy-900">Categories</h2>
+              <h2 className="font-serif text-[23px] font-semibold text-navy-900">Categories</h2>
               <p className="mt-1 text-[10px] leading-relaxed text-navy-900/50">
                 Add a category or rename the ones already in the shop.
               </p>
@@ -444,7 +444,7 @@ function AdminSettingsPage() {
           !loading && (
             <div className="px-3 py-10 text-center text-navy-900/50">
               <Tags size={24} className="mx-auto mb-3 text-gold-500" />
-              <h3 className="mb-2 font-serif text-[21px] font-normal text-navy-900">No categories yet.</h3>
+              <h3 className="mb-2 font-serif text-[21px] font-semibold text-navy-900">No categories yet.</h3>
               <p className="text-[10px]">Add your first category above, then assign products to it.</p>
             </div>
           )

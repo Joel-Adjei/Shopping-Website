@@ -19,6 +19,7 @@ const PRODUCT_FIELDS =
 // Each group flips off once the deployed schema proves it predates a migration.
 let supportsImageColumns = true
 let supportsCustomizationColumns = true
+let supportsTagsColumn = true
 
 const isMissingColumn = (error: { code?: string; message: string } | null, pattern: RegExp) =>
   Boolean(error && (error.code === '42703' || pattern.test(error.message)))
@@ -46,6 +47,7 @@ export const useCatalogStore = create<CatalogState>()((set, get) => ({
         PRODUCT_FIELDS,
         supportsImageColumns ? 'images' : '',
         supportsCustomizationColumns ? 'customization_enabled,customization_label' : '',
+        supportsTagsColumn ? 'tags' : '',
       ]
         .filter(Boolean)
         .join(',')
@@ -57,6 +59,8 @@ export const useCatalogStore = create<CatalogState>()((set, get) => ({
         supportsImageColumns = false
       } else if (supportsCustomizationColumns && isMissingColumn(productsResult.error, /customization_/i)) {
         supportsCustomizationColumns = false
+      } else if (supportsTagsColumn && isMissingColumn(productsResult.error, /tags/i)) {
+        supportsTagsColumn = false
       } else {
         break
       }
@@ -77,6 +81,7 @@ export const useCatalogStore = create<CatalogState>()((set, get) => ({
               compare_at_price: row.compare_at_price === null ? null : Number(row.compare_at_price),
               sizes: row.sizes ?? [],
               colors: row.colors ?? [],
+              tags: row.tags ?? [],
               images: row.images?.length ? row.images : row.image_url ? [row.image_url] : [],
               customization_enabled: Boolean(row.customization_enabled),
               customization_label: row.customization_label ?? null,

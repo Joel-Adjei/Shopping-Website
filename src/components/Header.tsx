@@ -10,6 +10,7 @@ import { iconButton } from "../lib/ui";
 const navLinks = [
   { to: "/shop", label: "Shop" },
   { to: "/about", label: "About" },
+  { to: "/contact", label: "Contact" },
 ];
 
 const EASE = [0.22, 0.61, 0.36, 1] as const;
@@ -61,7 +62,7 @@ export default function Header() {
             aria-hidden="true"
           />
           <span className="flex flex-col gap-1 leading-none">
-            <span className="font-serif text-[15px] font-medium tracking-[0.01em] text-navy-900 transition-colors group-hover:text-forest-700 sm:text-[17px] lg:text-[19px]">
+            <span className="font-serif text-[15px] font-semibold tracking-[0.01em] text-navy-900 transition-colors group-hover:text-forest-700 sm:text-[17px] lg:text-[19px]">
               Stylish Steps
             </span>
             <span className="bg-linear-to-r from-gold-600 via-gold-500 to-forest-600 bg-clip-text text-[6.5px] font-semibold uppercase tracking-[0.28em] text-transparent sm:text-[7px] lg:text-[8px] lg:tracking-[0.36em]">

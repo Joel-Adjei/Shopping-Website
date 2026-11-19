@@ -103,7 +103,7 @@ function CheckoutPage() {
       </button>
       <div className="px-1 py-10 text-center sm:py-12">
         <span className={`${eyebrow} justify-center`}>THE FINAL DETAIL</span>
-        <h1 className="my-4 font-serif text-[clamp(2.8rem,5vw,4rem)] font-normal leading-[1.04] tracking-[-0.045em] text-navy-900">
+        <h1 className="my-4 font-serif text-[clamp(2.8rem,5vw,4rem)] font-semibold leading-[1.04] tracking-[-0.045em] text-navy-900">
           Make it <em className={accentText}>yours.</em>
         </h1>
         <p className="text-[11px] text-navy-900/55">
@@ -315,7 +315,7 @@ function CheckoutPage() {
           <div className="pointer-events-none absolute -right-12 top-0 h-52 w-52 rounded-full bg-gold-500/15 blur-3xl" />
           <div className="relative">
             <span className={`${eyebrow} text-gold-300`}>YOUR SELECTION</span>
-            <h2 className="mb-6 mt-2 font-serif text-[27px] font-normal tracking-[-0.03em] text-cream-50">
+            <h2 className="mb-6 mt-2 font-serif text-[27px] font-semibold tracking-[-0.03em] text-cream-50">
               Order summary <span className="font-sans text-[12px] text-cream-200/50">({cartCount})</span>
             </h2>
             {cart.length ? (

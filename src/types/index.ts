@@ -27,6 +27,7 @@ export type Product = {
   images: string[]
   sizes: string[]
   colors: string[]
+  tags: string[]
   stock_quantity: number
   is_featured: boolean
   is_active: boolean
@@ -43,6 +44,22 @@ export type CartLine = {
   size: string
   color: string
   customization: string | null
+}
+
+export type ProductReview = {
+  id: string
+  product_id: string
+  author_name: string
+  rating: number
+  body: string | null
+  created_at: string
+}
+
+export type NewProductReview = {
+  product_id: string
+  author_name: string
+  rating: number
+  body: string | null
 }
 
 export type OrderStatus =

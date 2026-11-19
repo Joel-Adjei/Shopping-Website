@@ -258,7 +258,7 @@ export default function AboutPage() {
               className={`${panel} group relative overflow-hidden px-4 py-5 sm:px-5 sm:py-6`}
             >
               <span className="absolute inset-x-0 top-0 h-[2px] bg-linear-to-r from-gold-600 via-gold-400 to-forest-600 opacity-70 transition-opacity duration-300 group-hover:opacity-100" />
-              <h3 className="font-serif text-[19px] font-normal leading-tight tracking-[-0.02em] text-navy-900 sm:text-[21px]">
+              <h3 className="font-serif text-[19px] font-semibold leading-tight tracking-[-0.02em] text-navy-900 sm:text-[21px]">
                 {item.name}
               </h3>
               <p className="mt-2 text-[9.5px] leading-relaxed text-navy-900/55 sm:text-[10px]">{item.note}</p>
@@ -304,10 +304,10 @@ export default function AboutPage() {
           <div className="pointer-events-none absolute -right-16 top-0 h-64 w-64 rounded-full bg-gold-500/15 blur-3xl" />
           <div className="relative z-10">
             <span className={`${eyebrow} text-gold-300`}>THE CUSTOMIZE PART</span>
-            <h2 className="my-6 font-serif text-[clamp(2.4rem,4.8vw,3.8rem)] font-normal leading-[1.08] tracking-[-0.04em] text-cream-50">
+            <h2 className="my-6 font-serif text-[clamp(2.4rem,4.8vw,3.8rem)] font-semibold leading-[1.08] tracking-[-0.04em] text-cream-50">
               Your name, your brand,
               <br />
-              <em className="bg-linear-to-r from-gold-300 via-gold-400 to-gold-600 bg-clip-text font-normal italic text-transparent">
+              <em className="bg-linear-to-r from-gold-300 via-gold-400 to-gold-600 bg-clip-text font-hero font-normal italic text-transparent">
                 your idea.
               </em>
             </h2>
@@ -324,7 +324,7 @@ export default function AboutPage() {
                     <Icon size={16} />
                   </span>
                   <div>
-                    <h3 className="font-serif text-[18px] font-normal tracking-[-0.01em] text-cream-50">{title}</h3>
+                    <h3 className="font-serif text-[18px] font-semibold tracking-[-0.01em] text-cream-50">{title}</h3>
                     <p className="mt-1 max-w-[300px] text-[10.5px] leading-[1.8] text-cream-200/60">{text}</p>
                   </div>
                 </div>
@@ -381,7 +381,7 @@ export default function AboutPage() {
           transition={{ duration: 0.7, ease: EASE }}
         >
           <span className={eyebrow}>OUR STORY</span>
-          <h2 className="mt-4 font-serif text-[clamp(2.3rem,4.6vw,3.6rem)] font-normal leading-[1.08] tracking-[-0.04em] text-navy-900">
+          <h2 className="mt-4 font-serif text-[clamp(2.3rem,4.6vw,3.6rem)] font-semibold leading-[1.08] tracking-[-0.04em] text-navy-900">
             Started in Accra,
             <br />
             <em className={accentText}>made for you.</em>
@@ -448,7 +448,7 @@ export default function AboutPage() {
               <span className="block h-[2px] w-full bg-linear-to-r from-gold-600 via-gold-400 to-forest-600" />
               <div className="pt-5">
                 <Icon size={20} className="text-gold-600" />
-                <h3 className="mb-2.5 mt-4 font-serif text-[23px] font-normal tracking-[-0.02em] text-navy-900">
+                <h3 className="mb-2.5 mt-4 font-serif text-[23px] font-semibold tracking-[-0.02em] text-navy-900">
                   {title}
                 </h3>
                 <p className="text-[11px] leading-[1.9] text-navy-900/55">{text}</p>
@@ -462,9 +462,9 @@ export default function AboutPage() {
         <div className="pointer-events-none absolute left-1/2 top-0 h-72 w-[34rem] -translate-x-1/2 rounded-full bg-gold-500/15 blur-3xl" />
         <div className="relative">
           <span className={`${eyebrow} justify-center text-gold-300`}>READY WHEN YOU ARE</span>
-          <h2 className="mx-auto mt-4 max-w-[640px] font-serif text-[clamp(2.4rem,5vw,3.8rem)] font-normal leading-[1.08] tracking-[-0.04em] text-cream-50">
+          <h2 className="mx-auto mt-4 max-w-[640px] font-serif text-[clamp(2.4rem,5vw,3.8rem)] font-semibold leading-[1.08] tracking-[-0.04em] text-cream-50">
             Tell us what{" "}
-            <em className="bg-linear-to-r from-gold-300 via-gold-400 to-gold-600 bg-clip-text font-normal italic text-transparent">
+            <em className="bg-linear-to-r from-gold-300 via-gold-400 to-gold-600 bg-clip-text font-hero font-normal italic text-transparent">
               you have in mind.
             </em>
           </h2>

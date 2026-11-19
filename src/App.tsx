@@ -10,6 +10,7 @@ const HomePage = lazy(() => import('./pages/HomePage'))
 const ShopPage = lazy(() => import('./pages/ShopPage'))
 const ProductPage = lazy(() => import('./pages/ProductPage'))
 const AboutPage = lazy(() => import('./pages/AboutPage'))
+const ContactPage = lazy(() => import('./pages/ContactPage'))
 const CheckoutPage = lazy(() => import('./pages/CheckoutPage'))
 const AdminLoginPage = lazy(() => import('./pages/admin/AdminLoginPage'))
 const AdminDashboardPage = lazy(() => import('./pages/admin/AdminDashboardPage'))
@@ -34,6 +35,7 @@ function App() {
         <Route path="/shop" element={<Page><ShopPage /></Page>} />
         <Route path="/product/:slug" element={<Page><ProductPage /></Page>} />
         <Route path="/about" element={<Page><AboutPage /></Page>} />
+        <Route path="/contact" element={<Page><ContactPage /></Page>} />
         <Route path="/checkout" element={<Page><CheckoutPage /></Page>} />
         <Route
           path="/admin"

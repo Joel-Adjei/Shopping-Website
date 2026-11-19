@@ -15,6 +15,7 @@ export type ProductInput = {
   images: string[]
   sizes: string[]
   colors: string[]
+  tags: string[]
   stock_quantity: number
   is_featured: boolean
   is_active: boolean
@@ -63,6 +64,8 @@ const friendlyError = (error: { code?: string; message: string }): string => {
   if (error.code === '23514') return 'A value is out of range. Check that the compare-at price is not below the price.'
   if (/images/i.test(error.message))
     return 'The database is missing the product images column. Apply supabase/migrations/004_product_images.sql and try again.'
+  if (/tags/i.test(error.message))
+    return 'The database is missing the product tags column. Apply supabase/migrations/006_product_tags.sql and try again.'
   if (error.code === '42703' || /customization_/i.test(error.message))
     return 'The database is missing the personalisation columns. Apply supabase/migrations/002_product_customization.sql and try again.'
   return error.message
@@ -101,6 +104,7 @@ export const useAdminProductsStore = create<AdminProductsState>()((set, get) => 
         compare_at_price: row.compare_at_price === null ? null : Number(row.compare_at_price),
         sizes: row.sizes ?? [],
         colors: row.colors ?? [],
+        tags: row.tags ?? [],
         images: row.images?.length ? row.images : row.image_url ? [row.image_url] : [],
       })),
       categories: (categoriesResult.data ?? []) as AdminCategory[],

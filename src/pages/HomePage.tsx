@@ -2,7 +2,11 @@ import { ArrowRight, Package, ShieldCheck, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import NewsletterSection from "../components/NewsletterSection";
+import PersonaliseSection from "../components/PersonaliseSection";
+import DealsOfTheDay from "../components/DealsOfTheDay";
+import SpotlightCarousel from "../components/SpotlightCarousel";
 import ProductCard from "../components/ProductCard";
+import PromoBento from "../components/PromoBento";
 import Reveal from "../components/Reveal";
 import { useCatalogStore } from "../stores/useCatalogStore";
 import HeroCarousel from "../components/HeroCarousel";
@@ -47,6 +51,10 @@ export default function HomePage() {
         ))}
       </motion.section>
 
+      <PromoBento />
+
+      <SpotlightCarousel />
+
       <section className="px-5 py-16 sm:px-[4%] sm:py-20 lg:px-[5.4%] lg:py-28">
         <Reveal className="mb-9 flex flex-col gap-4 sm:mb-12 sm:flex-row sm:items-end sm:justify-between">
           <div>
@@ -73,6 +81,10 @@ export default function HomePage() {
           </Link>
         </Reveal>
       </section>
+
+      <DealsOfTheDay />
+
+      <PersonaliseSection />
 
       <NewsletterSection />
     </main>
