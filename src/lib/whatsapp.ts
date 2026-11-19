@@ -59,3 +59,37 @@ export const buildOrderWhatsAppUrl = (input: OrderWhatsAppInput): string | null 
 
   return `https://wa.me/${number}?text=${encodeURIComponent(message)}`
 }
+
+type ProductEnquiryInput = {
+  productName: string
+  price: number
+  productUrl?: string
+  size?: string | null
+  color?: string | null
+  customization?: string | null
+  whatsappNumber?: string | null
+}
+
+// A shopper can ask the vendor about a specific piece; the message carries the
+// product, selected options and the link back to the product page.
+export const buildProductEnquiryWhatsAppUrl = (input: ProductEnquiryInput): string | null => {
+  const number = normalizeWhatsAppNumber(input.whatsappNumber) || normalizeWhatsAppNumber(WHATSAPP_ADMIN_NUMBER)
+  if (!number) return null
+
+  const message = [
+    'Hello Stylish Steps Collection, I have a question about this piece.',
+    '',
+    `Product: ${input.productName}`,
+    `Price: ${money(input.price)}`,
+    input.size ? `Size: ${input.size}` : null,
+    input.color ? `Colour: ${input.color}` : null,
+    input.customization ? `Customisation: ${input.customization}` : null,
+    input.productUrl ? `Link: ${input.productUrl}` : null,
+    '',
+    'My question: ',
+  ]
+    .filter((line) => line !== null)
+    .join('\n')
+
+  return `https://wa.me/${number}?text=${encodeURIComponent(message)}`
+}

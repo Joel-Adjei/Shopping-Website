@@ -42,11 +42,11 @@ function AdminLoginPage() {
             <div className="pointer-events-none absolute -right-16 top-0 h-56 w-56 rounded-full bg-gold-500/20 blur-3xl" />
             <div className="relative z-10">
               <span className={`${eyebrow} text-gold-300`}>BEHIND THE EDIT</span>
-              <h1 className="my-5 font-serif text-[40px] font-normal leading-[1.07] tracking-[-0.045em] text-cream-50 lg:text-[49px]">
+              <h1 className="my-5 font-serif text-[40px] font-semibold leading-[1.07] tracking-[-0.045em] text-cream-50 lg:text-[49px]">
                 Good taste
                 <br />
                 needs{" "}
-                <em className="bg-linear-to-r from-gold-300 via-gold-400 to-gold-500 bg-clip-text font-normal italic text-transparent">
+                <em className="bg-linear-to-r from-gold-300 via-gold-400 to-gold-500 bg-clip-text font-hero font-normal italic text-transparent">
                   good care.
                 </em>
               </h1>
@@ -61,7 +61,7 @@ function AdminLoginPage() {
           </div>
           <form className="flex flex-col justify-center gap-4 p-7 sm:p-10 lg:p-12" onSubmit={submit}>
             <span className={eyebrow}>WELCOME BACK</span>
-            <h2 className="font-serif text-[32px] font-normal tracking-[-0.03em] text-navy-900 lg:text-[35px]">
+            <h2 className="font-serif text-[32px] font-semibold tracking-[-0.03em] text-navy-900 lg:text-[35px]">
               Admin sign in
             </h2>
             <p className="-mt-2 mb-1 text-[11px] text-navy-900/55">

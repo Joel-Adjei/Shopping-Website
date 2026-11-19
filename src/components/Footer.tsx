@@ -17,7 +17,7 @@ export default function Footer() {
             to="/"
             className={`group flex w-max flex-col gap-2 ${focusRing}`}
           >
-            <span className="relative inline-flex items-start font-serif text-[22px] leading-none tracking-[0.02em] text-cream-50">
+            <span className="relative inline-flex items-start font-serif text-[22px] font-semibold leading-none tracking-[0.02em] text-cream-50">
               SSC
               <span className="ml-0.5 mt-[-2px] text-[9px] text-gold-400">®</span>
             </span>
@@ -29,6 +29,12 @@ export default function Footer() {
             Thoughtful fashion for a life well lived.
           </p>
           <div className="flex items-center gap-6 sm:justify-start lg:justify-end">
+            <Link
+              to="/contact"
+              className={`text-[9px] uppercase tracking-[0.16em] text-cream-200/80 transition-colors hover:text-gold-300 ${focusRing}`}
+            >
+              Contact us
+            </Link>
             {settings.instagram_url && (
               <a
                 href={settings.instagram_url}

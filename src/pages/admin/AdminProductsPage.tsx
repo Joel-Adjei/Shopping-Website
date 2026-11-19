@@ -56,7 +56,7 @@ function AdminProductsPage() {
       <div className="flex flex-col items-start justify-between gap-5 sm:flex-row sm:items-end">
         <div>
           <span className={eyebrow}>SSC / CATALOGUE</span>
-          <h1 className="mb-2 mt-4 font-serif text-[clamp(2.2rem,4vw,3.2rem)] font-normal leading-[1.05] tracking-[-0.04em] text-navy-900">
+          <h1 className="mb-2 mt-4 font-serif text-[clamp(2.2rem,4vw,3.2rem)] font-semibold leading-[1.05] tracking-[-0.04em] text-navy-900">
             Your <em className={accentText}>products.</em>
           </h1>
           <p className="text-[11px] text-navy-900/55">Add, edit, hide or remove the pieces in your store.</p>
@@ -70,7 +70,7 @@ function AdminProductsPage() {
         <div className="mb-5 flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-center">
           <div>
             <span className={eyebrow}>{products.length} IN CATALOGUE</span>
-            <h2 className="mt-2 font-serif text-[25px] font-normal text-navy-900 sm:text-[27px]">All products</h2>
+            <h2 className="mt-2 font-serif text-[25px] font-semibold text-navy-900 sm:text-[27px]">All products</h2>
           </div>
           <input
             className={`${fieldInput} w-full sm:w-[min(260px,100%)]`}
@@ -171,7 +171,7 @@ function AdminProductsPage() {
           !loading && (
             <div className="px-3 py-12 text-center text-navy-900/50">
               <Package size={26} className="mx-auto mb-4 text-gold-500" />
-              <h3 className="mb-2 font-serif text-[23px] font-normal text-navy-900">
+              <h3 className="mb-2 font-serif text-[23px] font-semibold text-navy-900">
                 {products.length ? "No products match your search." : "Your catalogue is empty."}
               </h3>
               <p className="text-[10px]">

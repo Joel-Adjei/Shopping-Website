@@ -1,4 +1,4 @@
-import { ArrowRight, ImagePlus, Star, X } from "lucide-react";
+import { ArrowRight, ImagePlus, Plus, Star, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useAdminProductsStore, type ProductInput } from "../../stores/useAdminProductsStore";
@@ -26,6 +26,7 @@ type FormState = {
   images: string[];
   sizes: string;
   colors: string;
+  tags: string[];
   stock_quantity: string;
   is_featured: boolean;
   is_active: boolean;
@@ -44,6 +45,7 @@ const emptyForm: FormState = {
   images: [],
   sizes: "",
   colors: "",
+  tags: [],
   stock_quantity: "0",
   is_featured: false,
   is_active: true,
@@ -73,6 +75,7 @@ const fromProduct = (p: AdminProduct): FormState => ({
   images: p.images?.length ? p.images : p.image_url ? [p.image_url] : [],
   sizes: p.sizes.join(", "),
   colors: p.colors.join(", "),
+  tags: p.tags ?? [],
   stock_quantity: String(p.stock_quantity),
   is_featured: p.is_featured,
   is_active: p.is_active,
@@ -84,6 +87,118 @@ const cardShell = `${panel} p-5 sm:p-6`;
 const stepNumber =
   "bg-linear-to-r from-gold-600 to-gold-400 bg-clip-text text-[9px] font-semibold tracking-[0.1em] text-transparent";
 const MAX_IMAGES = 8;
+const MAX_TAGS = 12;
+
+const TAG_SUGGESTIONS = [
+  "New in",
+  "Bestseller",
+  "Sale",
+  "Limited edition",
+  "Handmade",
+  "Customisable",
+  "Gift",
+  "Everyday",
+  "Tailored",
+  "Statement",
+];
+
+// Multi-select tag picker: toggle popular tags or type your own.
+function TagPicker({ value, onChange }: { value: string[]; onChange: (tags: string[]) => void }) {
+  const [draft, setDraft] = useState("");
+  const has = (tag: string) => value.some((item) => item.toLowerCase() === tag.toLowerCase());
+  const atLimit = value.length >= MAX_TAGS;
+
+  const toggle = (tag: string) =>
+    onChange(
+      has(tag)
+        ? value.filter((item) => item.toLowerCase() !== tag.toLowerCase())
+        : [...value, tag],
+    );
+
+  const addDraft = () => {
+    const tag = draft.trim().replace(/\s+/g, " ").replace(/,/g, "").slice(0, 24);
+    setDraft("");
+    if (!tag || has(tag) || atLimit) return;
+    onChange([...value, tag]);
+  };
+
+  return (
+    <div className="flex flex-col gap-2.5 sm:col-span-2">
+      <span className="flex items-baseline justify-between gap-3">
+        <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-navy-800/80">
+          Tags{" "}
+          <span className="normal-case tracking-normal text-navy-900/35">
+            (optional, select all that apply)
+          </span>
+        </span>
+        <span className="text-[9px] tabular-nums text-navy-900/40">
+          {value.length}/{MAX_TAGS}
+        </span>
+      </span>
+
+      {value.length > 0 && (
+        <div className="flex flex-wrap gap-1.5" aria-label="Selected tags">
+          {value.map((tag) => (
+            <span
+              key={tag}
+              className="inline-flex items-center gap-1.5 rounded-full bg-linear-to-r from-navy-900 via-navy-800 to-forest-800 px-3 py-1.5 text-[9px] font-medium uppercase tracking-[0.08em] text-cream-50"
+            >
+              {tag}
+              <button
+                type="button"
+                className="text-cream-200/70 transition-colors hover:text-gold-300"
+                onClick={() => toggle(tag)}
+                aria-label={`Remove tag ${tag}`}
+              >
+                <X size={11} />
+              </button>
+            </span>
+          ))}
+        </div>
+      )}
+
+      <div className="flex flex-wrap gap-1.5">
+        {TAG_SUGGESTIONS.filter((tag) => !has(tag)).map((tag) => (
+          <button
+            key={tag}
+            type="button"
+            disabled={atLimit}
+            onClick={() => toggle(tag)}
+            className="inline-flex items-center gap-1 rounded-full border border-navy-900/10 bg-white/50 px-3 py-1.5 text-[9px] font-medium uppercase tracking-[0.08em] text-navy-900/60 transition-colors hover:border-gold-500/50 hover:text-forest-700 disabled:cursor-not-allowed disabled:opacity-40"
+          >
+            <Plus size={10} /> {tag}
+          </button>
+        ))}
+      </div>
+
+      <div className="flex items-center gap-2">
+        <input
+          className={fieldInput}
+          value={draft}
+          maxLength={24}
+          disabled={atLimit}
+          onChange={(e) => setDraft(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              e.preventDefault();
+              addDraft();
+            }
+          }}
+          placeholder={atLimit ? "Tag limit reached" : "Add your own tag"}
+          aria-label="Add a custom tag"
+        />
+        <button
+          type="button"
+          className={`${btnSecondary} shrink-0`}
+          onClick={addDraft}
+          disabled={atLimit || !draft.trim()}
+        >
+          Add
+        </button>
+      </div>
+    </div>
+  );
+}
 
 function AdminProductFormPage() {
   const { id } = useParams();
@@ -201,6 +316,7 @@ function AdminProductFormPage() {
       images,
       sizes: toList(form.sizes),
       colors: toList(form.colors),
+      tags: form.tags,
       stock_quantity: stock,
       is_featured: form.is_featured,
       is_active: form.is_active,
@@ -222,7 +338,7 @@ function AdminProductFormPage() {
   if (isEdit && !existing) {
     return loaded ? (
       <div className="px-3 py-16 text-center text-navy-900/50">
-        <h3 className="mb-3 font-serif text-[23px] font-normal text-navy-900">Product not found.</h3>
+        <h3 className="mb-3 font-serif text-[23px] font-semibold text-navy-900">Product not found.</h3>
         <p>
           <Link
             to="/admin/products"
@@ -242,7 +358,7 @@ function AdminProductFormPage() {
       <div className="flex flex-col items-start justify-between gap-5 sm:flex-row sm:items-end">
         <div>
           <span className={eyebrow}>SSC / CATALOGUE</span>
-          <h1 className="mb-2 mt-4 font-serif text-[clamp(2.2rem,4vw,3.2rem)] font-normal leading-[1.05] tracking-[-0.04em] text-navy-900">
+          <h1 className="mb-2 mt-4 font-serif text-[clamp(2.2rem,4vw,3.2rem)] font-semibold leading-[1.05] tracking-[-0.04em] text-navy-900">
             {isEdit ? "Edit" : "Add a"} <em className={accentText}>product.</em>
           </h1>
           <p className="text-[11px] text-navy-900/55">
@@ -313,6 +429,7 @@ function AdminProductFormPage() {
                 placeholder="Fabric, fit and what makes it special…"
               />
             </label>
+            <TagPicker value={form.tags} onChange={(tags) => set("tags", tags)} />
           </div>
         </section>
 

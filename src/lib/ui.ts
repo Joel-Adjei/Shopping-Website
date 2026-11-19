@@ -13,13 +13,13 @@ export const eyebrowLine =
   'inline-block h-px w-7 bg-linear-to-r from-gold-500 via-gold-400 to-transparent';
 
 export const accentText =
-  'bg-linear-to-r from-forest-700 via-forest-600 to-gold-600 bg-clip-text font-normal italic text-transparent';
+  'bg-linear-to-r from-forest-700 via-forest-600 to-gold-600 bg-clip-text font-hero font-normal italic text-transparent';
 
 export const sectionTitle =
-  'mt-4 font-serif text-[clamp(2.6rem,5vw,4rem)] font-normal leading-[1.06] tracking-[-0.04em] text-navy-900';
+  'mt-4 font-serif text-[clamp(2.6rem,5vw,4rem)] font-semibold leading-[1.06] tracking-[-0.04em] text-navy-900';
 
 export const displayTitle =
-  'font-serif text-[clamp(3.4rem,6.2vw,5.5rem)] font-normal leading-[1.01] tracking-[-0.055em] text-navy-900';
+  'font-serif text-[clamp(3.4rem,6.2vw,5.5rem)] font-semibold leading-[1.01] tracking-[-0.055em] text-navy-900';
 
 export const btnPrimary = `group inline-flex min-h-12 items-center justify-center gap-4 rounded-full border border-forest-700/30 bg-linear-to-r from-forest-800 via-forest-700 to-navy-900 px-7 py-3.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-cream-50 shadow-[0_16px_34px_-18px_rgba(10,36,61,0.7)] transition-all duration-300 hover:from-navy-900 hover:via-navy-800 hover:to-forest-800 hover:shadow-[0_20px_44px_-18px_rgba(10,36,61,0.8)] active:scale-[0.985] disabled:pointer-events-none disabled:opacity-50 ${focusRing}`;
 
@@ -43,7 +43,7 @@ export const fieldInput =
 export const panel =
   'rounded-sm border border-navy-900/10 bg-white/65 shadow-[0_30px_70px_-60px_rgba(10,36,61,0.65)] backdrop-blur-sm';
 
-export const cardTitle = 'font-serif text-[23px] font-normal text-navy-900';
+export const cardTitle = 'font-serif text-[23px] font-semibold text-navy-900';
 
 export const tableHead =
   'whitespace-nowrap border-b border-navy-900/10 px-3.5 py-3.5 text-left text-[8px] font-semibold uppercase tracking-[0.16em] text-navy-900/45';

@@ -42,7 +42,7 @@ export default function CartDrawer() {
         <div className="flex items-start justify-between border-b border-navy-900/10 pb-5">
           <div>
             <span className={eyebrow}>YOUR SELECTION</span>
-            <h2 className="mt-2 font-serif text-[31px] font-normal tracking-[-0.03em] text-navy-900">
+            <h2 className="mt-2 font-serif text-[31px] font-semibold tracking-[-0.03em] text-navy-900">
               Your bag <span className="font-sans text-[12px] text-navy-900/45">({cartCount})</span>
             </h2>
           </div>
@@ -60,7 +60,7 @@ export default function CartDrawer() {
             <span className="mb-5 grid h-16 w-16 place-items-center rounded-full bg-linear-to-br from-cream-200 to-gold-100 text-forest-600">
               <ShoppingBag size={30} strokeWidth={1.2} />
             </span>
-            <h3 className="max-w-[250px] font-serif text-[25px] font-normal leading-snug text-navy-900">
+            <h3 className="max-w-[250px] font-serif text-[25px] font-semibold leading-snug text-navy-900">
               A little room for something good.
             </h3>
             <p className="mb-6 mt-2.5 max-w-[260px] text-[11px] leading-relaxed text-navy-900/55">

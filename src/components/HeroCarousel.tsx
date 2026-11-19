@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
-import { btnPrimary, displayTitle, eyebrow, eyebrowLine } from "../lib/ui";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 
 const EASE = [0.22, 0.61, 0.36, 1] as const;
 
@@ -13,14 +12,15 @@ const heroSlides = [
       <>
         Every step
         <br />
-        <em>starts with you.</em>
+        <em className="font-hero font-normal italic tracking-[-0.02em] text-gold-300">
+          starts with you.
+        </em>
       </>
     ),
     body: "Discover shoes and fashion pieces that bring comfort, confidence and personality to every moment.",
     image:
-      "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=1500&q=90",
-    label: "THE EVERYDAY EDIT",
-    count: "01 / 03",
+      "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=1900&q=90",
+    label: "The everyday edit",
   },
   {
     kicker: "MADE TO MAKE AN IMPRESSION",
@@ -28,14 +28,15 @@ const heroSlides = [
       <>
         Walk bold.
         <br />
-        <em>Live beautifully.</em>
+        <em className="font-hero font-normal italic tracking-[-0.02em] text-gold-300">
+          Live beautifully.
+        </em>
       </>
     ),
     body: "From everyday essentials to statement looks, find pieces that make every outfit feel intentional.",
     image:
-      "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1500&q=90",
-    label: "THE STATEMENT EDIT",
-    count: "02 / 03",
+      "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1900&q=90",
+    label: "The statement edit",
   },
   {
     kicker: "YOUR STYLE, YOUR STORY",
@@ -43,104 +44,141 @@ const heroSlides = [
       <>
         Find your
         <br />
-        <em>next favourite.</em>
+        <em className="font-hero font-normal italic tracking-[-0.02em] text-gold-300">
+          next favourite.
+        </em>
       </>
     ),
     body: "Explore a collection curated for your pace, your plans and the way you want to show up.",
     image:
-      "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1500&q=90",
-    label: "NEW SEASON FINDS",
-    count: "03 / 03",
+      "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1900&q=90",
+    label: "New season finds",
   },
 ];
 
+const arrowButton =
+  "absolute top-1/2 z-20 hidden h-12 w-12 -translate-y-1/2 place-items-center rounded-full border border-white/45 bg-navy-950/25 text-cream-50 backdrop-blur-md transition-colors duration-300 hover:bg-cream-50 hover:text-navy-950 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold-400 lg:grid";
+
 function HeroCarousel() {
   const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const reduceMotion = useReducedMotion();
+
   useEffect(() => {
+    if (paused || reduceMotion) return;
     const timer = window.setInterval(
       () => setActive((current) => (current + 1) % heroSlides.length),
-      6000,
+      6500,
     );
     return () => window.clearInterval(timer);
-  }, []);
+  }, [paused, reduceMotion]);
+
   const slide = heroSlides[active];
+
+  const goTo = (index: number) =>
+    setActive((index + heroSlides.length) % heroSlides.length);
+
   return (
-    <section className="relative overflow-hidden bg-linear-to-br from-cream-100 via-cream-50 to-cream-200 px-5 pb-12 pt-7 sm:px-[4%] sm:pb-14 lg:px-[5.4%] lg:pb-16 lg:pt-9">
-      <div className="pointer-events-none absolute -left-24 top-1/4 h-72 w-72 rounded-full bg-gold-300/25 blur-3xl" />
-      <div className="pointer-events-none absolute -right-16 top-0 h-64 w-64 rounded-full bg-forest-500/10 blur-3xl" />
-      <div className="relative grid items-center gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:gap-[6%]">
+    <section
+      aria-roledescription="carousel"
+      aria-label="Featured collections"
+      className="relative isolate h-[calc(100svh-104px)] max-h-[860px] min-h-[560px] w-full overflow-hidden bg-navy-950 text-cream-50"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onFocusCapture={() => setPaused(true)}
+      onBlurCapture={() => setPaused(false)}
+    >
+      <AnimatePresence mode="wait">
+        <motion.img
+          key={slide.image}
+          className="absolute inset-0 h-full w-full object-cover object-center"
+          src={slide.image}
+          alt={slide.label}
+          initial={reduceMotion ? false : { opacity: 0, scale: 1.06 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{
+            opacity: { duration: 0.7 },
+            scale: { duration: 7, ease: "linear" },
+          }}
+        />
+      </AnimatePresence>
+
+      {/* Dark scrim keeps the copy readable over any photo. */}
+      <div className="pointer-events-none absolute inset-0 bg-linear-to-r from-navy-950/95 via-navy-950/60 to-navy-950/10" />
+      <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-navy-950/85 via-transparent to-navy-950/25" />
+
+      <div className="relative z-10 mx-auto flex h-full w-full max-w-[1440px] items-center px-5 sm:px-[4%] lg:px-[5.4%]">
         <AnimatePresence mode="wait">
           <motion.div
             key={`copy-${active}`}
-            className="relative z-10 max-w-[460px] py-5 lg:py-4"
-            initial={{ opacity: 0, x: -24 }}
+            className="max-w-[660px] pb-24 sm:pb-14 lg:pb-2"
+            initial={reduceMotion ? false : { opacity: 0, x: -28 }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -16 }}
-            transition={{ duration: 0.45, ease: EASE }}
+            exit={{ opacity: 0, x: -18 }}
+            transition={{ duration: 0.55, ease: EASE }}
           >
-            <div className={eyebrow}>
-              <span className={eyebrowLine} />
+            <span className="flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[0.24em] text-gold-300">
+              <span className="inline-block h-px w-8 bg-linear-to-r from-gold-400 to-transparent" />
               {slide.kicker}
-            </div>
-            <h1 className={`${displayTitle} my-5 sm:my-6`}>{slide.title}</h1>
-            <p className="mb-7 max-w-[360px] text-[12px] leading-[1.95] text-navy-900/65 sm:mb-8 sm:text-[13px]">
+            </span>
+
+            <h1 className="mt-5 text-[clamp(2.7rem,6.2vw,5.6rem)] font-semibold uppercase leading-[0.96] tracking-[-0.03em] text-cream-50 [text-shadow:0_2px_26px_rgba(7,26,46,0.45)]">
+              {slide.title}
+            </h1>
+
+            <p className="mt-5 max-w-[430px] text-[14px] leading-[1.75] text-cream-100/75 sm:text-[15px]">
               {slide.body}
             </p>
-            <Link className={btnPrimary} to="/#shop">
-              Shop the collection <ArrowRight size={16} />
+
+            <Link
+              to="/shop"
+              className="group mt-8 inline-flex h-12 items-center justify-center gap-3 bg-cream-50 px-8 text-[11px] font-semibold uppercase tracking-[0.18em] text-navy-950 transition-colors duration-300 hover:bg-gold-400 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cream-50"
+            >
+              Shop the collection
+              <ArrowRight
+                size={16}
+                className="transition-transform duration-300 group-hover:translate-x-1"
+              />
             </Link>
-            <div className="mt-9 flex flex-wrap items-center gap-3 text-[8px] uppercase tracking-[0.16em] text-navy-900/40 sm:mt-12">
-              <span className="text-navy-900/70">{slide.count}</span>
-              <span className="h-px w-9 bg-linear-to-r from-gold-500 to-navy-900/10" />
-              <span>{slide.label}</span>
-            </div>
           </motion.div>
         </AnimatePresence>
-        <div className="relative h-[340px] overflow-hidden rounded-sm bg-cream-300 shadow-[0_40px_90px_-50px_rgba(10,36,61,0.65)] sm:h-[420px] lg:h-[52vw] lg:max-h-[670px] lg:min-h-[500px]">
-          <AnimatePresence mode="wait">
-            <motion.img
-              key={slide.image}
-              className="absolute inset-0 h-full w-full object-cover object-center saturate-[0.9]"
-              src={slide.image}
-              alt={slide.label}
-              initial={{ opacity: 0, scale: 1.06 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{
-                opacity: { duration: 0.6 },
-                scale: { duration: 6.4, ease: "linear" },
-              }}
-            />
-          </AnimatePresence>
-          <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-navy-950/60 via-navy-950/5 to-transparent" />
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-linear-to-b from-navy-950/25 to-transparent" />
-          <div className="absolute inset-x-5 bottom-4 z-10 flex justify-between text-[8px] uppercase tracking-[0.15em] text-cream-50/85 [text-shadow:0_1px_6px_rgba(0,0,0,0.45)]">
-            <span>{slide.label}</span>
-            <span className="hidden sm:inline">Stylish Steps Collection</span>
-          </div>
-          <motion.div
-            className="absolute right-4 top-4 z-10 flex h-[72px] w-[72px] flex-col items-center justify-center gap-1 rounded-full border border-cream-50/45 bg-navy-950/15 text-[7px] uppercase tracking-[0.16em] text-cream-50 backdrop-blur-sm lg:h-[86px] lg:w-[86px]"
-            initial={{ opacity: 0, rotate: -14 }}
-            animate={{ opacity: 1, rotate: 0 }}
-            transition={{ duration: 0.7, delay: 0.3, ease: EASE }}
+      </div>
+
+      <button
+        className={`${arrowButton} left-3`}
+        aria-label="Previous slide"
+        onClick={() => goTo(active - 1)}
+      >
+        <ChevronLeft size={20} />
+      </button>
+      <button
+        className={`${arrowButton} right-3`}
+        aria-label="Next slide"
+        onClick={() => goTo(active + 1)}
+      >
+        <ChevronRight size={20} />
+      </button>
+
+      <div className="absolute bottom-5 right-5 z-20 flex items-end gap-2 sm:bottom-7 sm:right-[4%] lg:bottom-8 lg:right-[5.4%]">
+        <span className="mb-1 mr-1 hidden text-[10px] font-medium tabular-nums tracking-[0.22em] text-cream-100/60 sm:block">
+          {String(active + 1).padStart(2, "0")} / {String(heroSlides.length).padStart(2, "0")}
+        </span>
+        {heroSlides.map((item, index) => (
+          <button
+            key={item.label}
+            className={`relative h-14 w-11 overflow-hidden border-2 transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-400 sm:h-[74px] sm:w-[58px] ${
+              index === active
+                ? "border-cream-50 opacity-100"
+                : "border-white/20 opacity-50 hover:opacity-90"
+            }`}
+            aria-label={`Show slide ${index + 1}: ${item.label}`}
+            aria-current={index === active}
+            onClick={() => setActive(index)}
           >
-            <span className="font-semibold tracking-[0.2em]">SSC</span>
-            <span className="text-[23px] leading-none text-gold-300">✳</span>
-            <span className="text-[6px] sm:text-[7px]">STYLE · COMFORT</span>
-          </motion.div>
-          <div className="absolute bottom-4 left-1/2 z-20 flex -translate-x-1/2 items-center justify-center gap-2" aria-label="Choose hero slide">
-            {heroSlides.map((item, index) => (
-              <button
-                key={item.label}
-                className={`h-1.5 rounded-full transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-400 ${
-                  index === active ? "w-7 bg-gold-400" : "w-2.5 bg-cream-50/50 hover:bg-cream-50/80"
-                }`}
-                aria-label={`Show slide ${index + 1}`}
-                onClick={() => setActive(index)}
-              />
-            ))}
-          </div>
-        </div>
+            <img className="h-full w-full object-cover" src={item.image} alt="" />
+          </button>
+        ))}
       </div>
     </section>
   );

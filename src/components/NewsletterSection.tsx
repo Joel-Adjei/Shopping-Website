@@ -10,7 +10,7 @@ export default function NewsletterSection() {
 
   return (
     <motion.section
-      className="relative mx-5 my-10 overflow-hidden rounded-sm border border-gold-500/20 bg-linear-to-br from-cream-200 via-gold-100 to-cream-300 px-6 py-14 sm:mx-[4%] lg:mx-[5.4%] lg:px-[8%] lg:py-20"
+      className="relative  overflow-hidden rounded-sm border border-gold-500/20 bg-linear-to-br from-cream-200 via-gold-100 to-cream-300 px-6 py-14 lg:px-[8%] lg:py-20"
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.3 }}
@@ -27,7 +27,7 @@ export default function NewsletterSection() {
           <span className={eyebrow}>
             <span className={eyebrowLine} />A NOTE FROM SSC
           </span>
-          <h2 className="mt-4 font-serif text-[clamp(2.4rem,4.5vw,3.2rem)] font-normal leading-[1.08] tracking-[-0.04em] text-navy-900">
+          <h2 className="mt-4 font-serif text-[clamp(2.4rem,4.5vw,3.2rem)] font-semibold leading-[1.08] tracking-[-0.04em] text-navy-900">
             Good things,
             <br />
             <em className={accentText}>occasionally.</em>
