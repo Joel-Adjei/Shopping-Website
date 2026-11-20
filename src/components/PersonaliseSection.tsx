@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import Reveal from "./Reveal";
 import { useCatalogStore } from "../stores/useCatalogStore";
-import { ALL_CATEGORIES, useShopFilterStore } from "../stores/useShopFilterStore";
+import { useShopFilterStore } from "../stores/useShopFilterStore";
 import { accentText, eyebrow, sectionTitle, textLink } from "../lib/ui";
 
 const EASE = [0.22, 0.61, 0.36, 1] as const;
@@ -54,11 +54,11 @@ const pieces = [
 export default function PersonaliseSection() {
   const products = useCatalogStore((state) => state.products);
   const setSearch = useShopFilterStore((state) => state.setSearch);
-  const setCategory = useShopFilterStore((state) => state.setCategory);
+  const resetFilters = useShopFilterStore((state) => state.reset);
 
-  // Only apply a search when the catalogue can actually answer it.
+  // Start from a clean shop view so old facets can't hide the pieces we're linking to.
   const openPiece = (term: string) => {
-    setCategory(ALL_CATEGORIES);
+    resetFilters();
     const hasMatches = products.some((product) => product.name.toLowerCase().includes(term));
     setSearch(hasMatches ? term : "");
   };
@@ -80,10 +80,7 @@ export default function PersonaliseSection() {
           <Link
             to="/shop"
             className={`${textLink} mt-4`}
-            onClick={() => {
-              setCategory(ALL_CATEGORIES);
-              setSearch("");
-            }}
+            onClick={resetFilters}
           >
             Shop personalisable pieces <ArrowRight size={15} />
           </Link>
@@ -144,10 +141,7 @@ export default function PersonaliseSection() {
         <Link
           to="/shop"
           className={textLink}
-          onClick={() => {
-            setCategory(ALL_CATEGORIES);
-            setSearch("");
-          }}
+          onClick={resetFilters}
         >
           Browse the collection <ArrowRight size={15} />
         </Link>

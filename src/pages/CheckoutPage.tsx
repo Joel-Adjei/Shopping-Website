@@ -1,8 +1,8 @@
-import { ArrowRight, ShieldCheck, Sparkles } from "lucide-react";
-import { useEffect, useState } from "react";
+import { ArrowRight, MessageCircle, ShieldCheck, Sparkles } from "lucide-react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCartStore, lineKey, selectCartCount, selectDeliveryFee, selectSubtotal } from "../stores/useCartStore";
-import { useCheckoutStore, type CheckoutDetails } from "../stores/useCheckoutStore";
+import type { CheckoutDetails } from "../stores/useCheckoutStore";
 import { useUIStore } from "../stores/useUIStore";
 import { useStoreSettingsStore } from "../stores/useStoreSettingsStore";
 import { money } from "../util/export";
@@ -19,12 +19,6 @@ function CheckoutPage() {
   const cartCount = useCartStore(selectCartCount);
   const subtotal = useCartStore(selectSubtotal);
   const deliveryFee = useCartStore(selectDeliveryFee);
-  const clearCart = useCartStore((state) => state.clear);
-  const submitting = useCheckoutStore((state) => state.submitting);
-  const error = useCheckoutStore((state) => state.error);
-  const unreachable = useCheckoutStore((state) => state.unreachable);
-  const placeOrder = useCheckoutStore((state) => state.placeOrder);
-  const clearError = useCheckoutStore((state) => state.clearError);
   const showToast = useUIStore((state) => state.showToast);
   const whatsappNumber = useStoreSettingsStore((state) => state.settings.whatsapp_number);
 
@@ -37,33 +31,14 @@ function CheckoutPage() {
     notes: "",
     payment: "cash_on_delivery",
   });
+  const [error, setError] = useState("");
   const total = subtotal + deliveryFee;
 
-  // When the ordering service cannot be reached, the same order can still reach the store
-  // through WhatsApp, with every detail already filled in.
-  const whatsappFallbackUrl = unreachable
-    ? buildOrderWhatsAppUrl({
-        orderNumber: "",
-        details: form,
-        lines: cart,
-        subtotal,
-        deliveryFee,
-        total,
-        whatsappNumber,
-      })
-    : null;
-
-  // Don't show an error left over from an earlier visit.
-  useEffect(() => clearError, [clearError]);
-
-  async function submitOrder(e: React.FormEvent) {
+  // Orders are handed to the studio as a ready-written WhatsApp message.
+  function sendOrderByWhatsApp(e: React.FormEvent) {
     e.preventDefault();
-    const placed = await placeOrder(form, cart);
-    if (!placed) return;
-
-    // The direct WhatsApp handoff is built from the checkout snapshot before the cart clears.
-    const whatsappUrl = buildOrderWhatsAppUrl({
-      orderNumber: placed.orderNumber,
+    const url = buildOrderWhatsAppUrl({
+      orderNumber: "",
       details: form,
       lines: cart,
       subtotal,
@@ -71,26 +46,24 @@ function CheckoutPage() {
       total,
       whatsappNumber,
     });
-    clearCart();
-    showToast(
-      "Order received",
-      whatsappUrl
-        ? `Order ${placed.orderNumber} — send the details to us on WhatsApp to confirm.`
-        : `Order ${placed.orderNumber} was saved. We'll be in touch shortly.`,
-    );
-
-    if (whatsappUrl) {
-      const opened = window.open(whatsappUrl, "_blank");
-      if (opened) {
-        opened.opener = null;
-        navigate("/");
-      } else {
-        // Pop-up blocked: take this tab to WhatsApp instead.
-        window.location.assign(whatsappUrl);
-      }
+    if (!url) {
+      setError(
+        "WhatsApp isn't set up yet. Add a WhatsApp number in store settings and try again.",
+      );
       return;
     }
-    navigate("/");
+    setError("");
+    showToast(
+      "Order ready to send",
+      "WhatsApp has opened with every detail — press send to confirm.",
+    );
+    const opened = window.open(url, "_blank");
+    if (opened) {
+      opened.opener = null;
+    } else {
+      // Pop-up blocked: take this tab to WhatsApp instead.
+      window.location.assign(url);
+    }
   }
 
   return (
@@ -112,7 +85,7 @@ function CheckoutPage() {
       </div>
 
       <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(300px,0.8fr)] lg:gap-10">
-        <form className="flex flex-col gap-4" onSubmit={submitOrder}>
+        <form className="flex flex-col gap-4" onSubmit={sendOrderByWhatsApp}>
           <section className={cardShell}>
             <div className="mb-5 flex items-center gap-3 border-b border-navy-900/10 pb-4">
               <span className="bg-linear-to-r from-gold-600 to-gold-400 bg-clip-text text-[9px] font-semibold tracking-[0.1em] text-transparent">
@@ -269,41 +242,19 @@ function CheckoutPage() {
               </span>
             </label>
           </section>
-          {unreachable && whatsappFallbackUrl ? (
+          {error && (
             <div
-              className="flex flex-col items-start gap-2.5 rounded-sm border border-gold-500/40 bg-linear-to-br from-gold-100 via-cream-100 to-cream-200 p-4"
+              className="rounded-sm border border-red-900/20 bg-red-900/5 p-3 text-[10px] leading-relaxed text-red-900/80"
               role="alert"
             >
-              <strong className="text-[9px] font-semibold uppercase tracking-[0.14em] text-gold-700">
-                Order by WhatsApp
-              </strong>
-              <p className="text-[10px] leading-relaxed text-navy-900/65">
-                Our online ordering service is unavailable right now. Send
-                your order to us on WhatsApp — every item, your address and the
-                total are already written out.
-              </p>
-              <a
-                className={`${btnPrimary} w-full justify-between`}
-                href={whatsappFallbackUrl}
-                target="_blank"
-                rel="noreferrer"
-              >
-                Send order on WhatsApp <ArrowRight size={16} />
-              </a>
+              {error}
             </div>
-          ) : (
-            error && (
-              <div className="rounded-sm border border-red-900/20 bg-red-900/5 p-3 text-[10px] leading-relaxed text-red-900/80" role="alert">
-                {error}
-              </div>
-            )
           )}
           <button
             className={`${btnPrimary} w-full justify-between`}
-            disabled={submitting || !cart.length}
+            disabled={!cart.length}
           >
-            {submitting ? "Placing your order…" : "Place order"}{" "}
-            <ArrowRight size={16} />
+            Send order by WhatsApp <MessageCircle size={16} />
           </button>
           <p className="flex items-center justify-center gap-1.5 text-[9px] text-navy-900/45">
             <ShieldCheck size={14} /> Your information is used only to process
