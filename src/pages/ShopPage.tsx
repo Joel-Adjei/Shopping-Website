@@ -90,7 +90,7 @@ export default function ShopPage() {
                   type="button"
                   onClick={() => setFiltersOpen((open) => !open)}
                   aria-expanded={filtersOpen}
-                  className={`inline-flex items-center gap-2 rounded-full border border-navy-900/15 bg-white/60 px-3.5 py-2 text-[8px] font-semibold uppercase tracking-[0.14em] text-navy-800 transition-colors hover:border-gold-500/60 lg:hidden ${focusRing}`}
+                  className={`inline-flex items-center gap-2 rounded-full border border-navy-900/15 bg-cream-50/60 px-3.5 py-2 text-[8px] font-semibold uppercase tracking-[0.14em] text-navy-800 transition-colors hover:border-gold-500/60 lg:hidden ${focusRing}`}
                 >
                   <SlidersHorizontal size={13} className="text-gold-600" />
                   Filters
@@ -125,7 +125,7 @@ export default function ShopPage() {
             </div>
 
             {filtersOpen && (
-              <div className="mb-6 border border-navy-900/10 bg-white/55 p-4 backdrop-blur-sm lg:hidden">
+              <div className="mb-6 border border-navy-900/10 bg-cream-50/55 p-4 backdrop-blur-sm lg:hidden">
                 <ShopFilters
                   products={products}
                   categoryNames={categoryNames}

@@ -18,7 +18,7 @@ export default function Toast() {
           exit={{ opacity: 0, y: -10, scale: 0.98 }}
           transition={{ duration: 0.24, ease: [0.22, 0.61, 0.36, 1] }}
         >
-          <div className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-linear-to-br from-forest-700 to-navy-900 text-cream-50">
+          <div className="tone-dark grid h-8 w-8 shrink-0 place-items-center rounded-full bg-linear-to-br from-forest-700 to-navy-900 text-cream-50">
             <Check size={16} />
           </div>
           <div className="flex flex-1 flex-col gap-1">

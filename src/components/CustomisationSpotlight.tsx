@@ -4,16 +4,6 @@ import { eyebrow, eyebrowLine, focusRing } from "../lib/ui";
 import { useCatalogStore } from "../stores/useCatalogStore";
 import { useShopFilterStore } from "../stores/useShopFilterStore";
 
-const starField = {
-  backgroundImage: [
-    "radial-gradient(circle at 12% 22%, rgba(255,255,255,0.55) 0 1px, transparent 1.6px)",
-    "radial-gradient(circle at 68% 72%, rgba(255,255,255,0.35) 0 1px, transparent 1.4px)",
-    "radial-gradient(circle at 85% 18%, rgba(255,255,255,0.5) 0 1px, transparent 1.5px)",
-    "radial-gradient(circle at 40% 88%, rgba(255,255,255,0.3) 0 1px, transparent 1.4px)",
-  ].join(", "),
-  backgroundSize: "240px 200px, 320px 260px, 200px 220px, 280px 240px",
-};
-
 const finishes = [
   {
     name: "Bracelets",
@@ -68,9 +58,9 @@ export default function CustomisationSpotlight() {
   return (
     <section
       id="customise"
-      className="relative overflow-hidden bg-navy-950 py-14 text-cream-100 sm:py-16 lg:py-20"
+      className="tone-dark relative overflow-hidden bg-navy-950 py-14 text-cream-100 sm:py-16 lg:py-20"
     >
-      <div className="pointer-events-none absolute inset-0 opacity-80" style={starField} />
+      <div className="ssc-star-field pointer-events-none absolute inset-0 opacity-80" />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(188,153,69,0.14),transparent_55%),radial-gradient(ellipse_at_bottom_left,rgba(42,79,62,0.28),transparent_60%)]" />
 
       <div className="relative mx-auto grid w-full max-w-[1440px] items-center gap-11 px-5 sm:px-[4%] lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:gap-14 lg:px-[5.4%]">

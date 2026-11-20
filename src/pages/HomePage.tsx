@@ -28,7 +28,7 @@ export default function HomePage() {
       <HeroCarousel />
 
       <motion.section
-        className="mx-5 grid gap-3 border-y border-navy-900/10 bg-white/40 py-5 backdrop-blur-sm sm:mx-[4%] sm:grid-cols-3 sm:gap-4 lg:mx-[5.4%]"
+        className="mx-5 grid gap-3 border-y border-navy-900/10 bg-cream-50/40 py-5 backdrop-blur-sm sm:mx-[4%] sm:grid-cols-3 sm:gap-4 lg:mx-[5.4%]"
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.4 }}

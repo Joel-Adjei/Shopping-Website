@@ -82,7 +82,7 @@ function HeroCarousel() {
     <section
       aria-roledescription="carousel"
       aria-label="Featured collections"
-      className="relative isolate h-[calc(100svh-72px)] max-h-[860px] min-h-[560px] w-full overflow-hidden bg-navy-950 text-cream-50 sm:h-[calc(100svh-78px)] lg:h-[calc(100svh-86px)]"
+      className="tone-dark relative isolate h-[calc(100svh-72px)] max-h-[860px] min-h-[560px] w-full overflow-hidden bg-navy-950 text-cream-50 sm:h-[calc(100svh-78px)] lg:h-[calc(100svh-86px)]"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocusCapture={() => setPaused(true)}

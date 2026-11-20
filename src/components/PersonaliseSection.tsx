@@ -109,7 +109,7 @@ export default function PersonaliseSection() {
                   alt={piece.alt}
                   className="h-full w-full object-cover saturate-[0.9] transition-transform duration-700 ease-out group-hover:scale-[1.05]"
                 />
-                <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-navy-950/35 via-transparent to-transparent opacity-70 transition-opacity duration-500 group-hover:opacity-100" />
+                <div className="tone-dark pointer-events-none absolute inset-0 bg-linear-to-t from-navy-950/35 via-transparent to-transparent opacity-70 transition-opacity duration-500 group-hover:opacity-100" />
                 <span className="absolute left-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-cream-50/92 px-2.5 py-1 text-[7px] font-semibold uppercase tracking-[0.14em] text-navy-900 shadow-sm backdrop-blur-sm">
                   <Sparkles size={10} className="text-gold-600" />
                   Customisable

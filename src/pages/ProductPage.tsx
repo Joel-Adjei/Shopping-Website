@@ -243,7 +243,7 @@ function ProductDetails({ product }: { product: Product }) {
                 <button
                   type="button"
                   aria-label="Previous image"
-                  className="absolute left-3 top-1/2 z-10 grid h-9 w-9 -translate-y-1/2 place-items-center rounded-full border border-white/40 bg-cream-50/90 text-navy-900 backdrop-blur-sm transition-colors hover:bg-navy-900 hover:text-cream-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-500"
+                  className="tone-dark absolute left-3 top-1/2 z-10 grid h-9 w-9 -translate-y-1/2 place-items-center rounded-full border border-white/40 bg-cream-50/90 text-navy-900 backdrop-blur-sm transition-colors hover:bg-navy-900 hover:text-cream-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-500"
                   onClick={() => setActiveImage((index) => (index - 1 + images.length) % images.length)}
                 >
                   <ChevronLeft size={16} />
@@ -251,12 +251,12 @@ function ProductDetails({ product }: { product: Product }) {
                 <button
                   type="button"
                   aria-label="Next image"
-                  className="absolute right-3 top-1/2 z-10 grid h-9 w-9 -translate-y-1/2 place-items-center rounded-full border border-white/40 bg-cream-50/90 text-navy-900 backdrop-blur-sm transition-colors hover:bg-navy-900 hover:text-cream-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-500"
+                  className="tone-dark absolute right-3 top-1/2 z-10 grid h-9 w-9 -translate-y-1/2 place-items-center rounded-full border border-white/40 bg-cream-50/90 text-navy-900 backdrop-blur-sm transition-colors hover:bg-navy-900 hover:text-cream-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-500"
                   onClick={() => setActiveImage((index) => (index + 1) % images.length)}
                 >
                   <ChevronRight size={16} />
                 </button>
-                <span className="absolute bottom-3 right-3 z-10 rounded-full bg-navy-950/55 px-2.5 py-1 text-[8px] tabular-nums tracking-[0.12em] text-cream-50 backdrop-blur-sm">
+                <span className="tone-dark absolute bottom-3 right-3 z-10 rounded-full bg-navy-950/55 px-2.5 py-1 text-[8px] tabular-nums tracking-[0.12em] text-cream-50 backdrop-blur-sm">
                   {activeImage + 1} / {images.length}
                 </span>
               </>
@@ -351,7 +351,7 @@ function ProductDetails({ product }: { product: Product }) {
                   className={`${optionChip} ${
                     c === color
                       ? "border-transparent bg-linear-to-r from-navy-900 to-forest-800 text-cream-50 shadow-md"
-                      : "border-navy-900/15 bg-white/40 text-navy-900/70 hover:border-gold-500/60"
+                      : "border-navy-900/15 bg-cream-50/40 text-navy-900/70 hover:border-gold-500/60"
                   }`}
                   aria-pressed={c === color}
                   onClick={() => setColor(c)}
@@ -374,7 +374,7 @@ function ProductDetails({ product }: { product: Product }) {
                   className={`${optionChip} ${
                     s === size
                       ? "border-transparent bg-linear-to-r from-navy-900 to-forest-800 text-cream-50 shadow-md"
-                      : "border-navy-900/15 bg-white/40 text-navy-900/70 hover:border-gold-500/60"
+                      : "border-navy-900/15 bg-cream-50/40 text-navy-900/70 hover:border-gold-500/60"
                   }`}
                   aria-pressed={s === size}
                   onClick={() => setSize(s)}
@@ -390,7 +390,7 @@ function ProductDetails({ product }: { product: Product }) {
               {!customizationOpen ? (
                 <motion.button
                   type="button"
-                  className="flex w-full items-center justify-between gap-3 rounded-sm border border-dashed border-navy-900/20 bg-white/40 px-4 py-3.5 text-left transition-colors hover:border-gold-500/60 hover:bg-cream-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-500"
+                  className="flex w-full items-center justify-between gap-3 rounded-sm border border-dashed border-navy-900/20 bg-cream-50/40 px-4 py-3.5 text-left transition-colors hover:border-gold-500/60 hover:bg-cream-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-500"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   onClick={() => setCustomizationOpen(true)}
@@ -437,7 +437,7 @@ function ProductDetails({ product }: { product: Product }) {
                     {product.customization_label ?? "Add a name or brand"}. Describe what you would
                     like and each piece is finished to order — please check the spelling.
                   </p>
-                  <div className="rounded-sm border border-navy-900/15 bg-white/70 px-3 transition focus-within:border-gold-500 focus-within:ring-4 focus-within:ring-gold-500/10">
+                  <div className="rounded-sm border border-navy-900/15 bg-cream-50/70 px-3 transition focus-within:border-gold-500 focus-within:ring-4 focus-within:ring-gold-500/10">
                     <textarea
                       className="w-full resize-y bg-transparent py-3 text-[12px] leading-relaxed text-navy-900 outline-none placeholder:text-navy-900/35"
                       rows={3}
@@ -457,7 +457,7 @@ function ProductDetails({ product }: { product: Product }) {
           )}
 
           <div className="mt-8 flex items-stretch gap-3">
-            <div className="inline-flex items-center gap-4 rounded-full border border-navy-900/15 bg-white/40 px-2.5 py-1">
+            <div className="inline-flex items-center gap-4 rounded-full border border-navy-900/15 bg-cream-50/40 px-2.5 py-1">
               <button
                 className="grid place-items-center p-0.5 text-navy-800 transition-colors hover:text-forest-700 disabled:cursor-not-allowed disabled:opacity-35"
                 onClick={() => setQuantity((q) => Math.max(1, q - 1))}

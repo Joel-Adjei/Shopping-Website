@@ -58,7 +58,7 @@ function PromoTile({
     <Link
       to="/shop"
       onClick={openCategory}
-      className={`group relative flex min-h-[210px] items-center overflow-hidden rounded-sm ${background} ${className}`}
+      className={`promo-card group relative flex min-h-[210px] items-center overflow-hidden rounded-sm ${background} ${className}`}
     >
       <img
         src={image}
@@ -68,7 +68,7 @@ function PromoTile({
         }`}
       />
       <div
-        className={`pointer-events-none absolute inset-y-0 left-0 w-[82%] bg-linear-to-r ${scrim} to-transparent`}
+        className={`promo-scrim pointer-events-none absolute inset-y-0 left-0 w-[82%] bg-linear-to-r ${scrim} to-transparent`}
       />
       <div className={`relative z-10 px-6 py-7 sm:px-7 ${compact ? "max-w-[70%]" : "max-w-[62%]"}`}>
         <span className="text-[8px] font-semibold uppercase tracking-[0.2em] text-gold-700">
@@ -89,7 +89,7 @@ function PromoTile({
         </span>
       </div>
       {badge && (
-        <span className="absolute right-4 top-4 z-10 bg-gold-500 px-2.5 py-1 text-[8px] font-semibold uppercase tracking-[0.14em] text-navy-950 shadow-sm">
+        <span className="tone-dark absolute right-4 top-4 z-10 bg-gold-500 px-2.5 py-1 text-[8px] font-semibold uppercase tracking-[0.14em] text-navy-950 shadow-sm">
           {badge}
         </span>
       )}
@@ -124,7 +124,7 @@ export default function PromoBento() {
         <Link
           to="/shop"
           onClick={resetFilters}
-          className="group relative flex min-h-[460px] flex-col justify-end overflow-hidden rounded-sm bg-navy-900 p-7 sm:min-h-[540px] sm:p-9 lg:min-h-full lg:p-11"
+          className="tone-dark group relative flex min-h-[460px] flex-col justify-end overflow-hidden rounded-sm bg-navy-900 p-7 sm:min-h-[540px] sm:p-9 lg:min-h-full lg:p-11"
         >
           <img
             src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1400&q=85"

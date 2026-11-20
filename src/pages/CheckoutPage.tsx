@@ -187,7 +187,7 @@ function CheckoutPage() {
               className={`relative mt-2.5 flex cursor-pointer items-center gap-3 rounded-sm border p-4 transition-colors ${
                 form.payment === "cash_on_delivery"
                   ? "border-forest-600/60 bg-linear-to-r from-forest-600/8 via-cream-50 to-gold-100/40"
-                  : "border-navy-900/10 bg-white/40 hover:border-gold-500/50"
+                  : "border-navy-900/10 bg-cream-50/40 hover:border-gold-500/50"
               }`}
             >
               <input
@@ -216,7 +216,7 @@ function CheckoutPage() {
               className={`relative mt-2.5 flex cursor-pointer items-center gap-3 rounded-sm border p-4 transition-colors ${
                 form.payment === "mobile_money_manual"
                   ? "border-forest-600/60 bg-linear-to-r from-forest-600/8 via-cream-50 to-gold-100/40"
-                  : "border-navy-900/10 bg-white/40 hover:border-gold-500/50"
+                  : "border-navy-900/10 bg-cream-50/40 hover:border-gold-500/50"
               }`}
             >
               <input
@@ -262,7 +262,7 @@ function CheckoutPage() {
           </p>
         </form>
 
-        <aside className="relative order-first overflow-hidden rounded-sm bg-linear-to-br from-navy-950 via-navy-900 to-forest-900 p-5 text-cream-100 shadow-[0_40px_80px_-50px_rgba(10,36,61,0.8)] sm:p-6 lg:order-last lg:sticky lg:top-[110px]">
+        <aside className="tone-dark relative order-first overflow-hidden rounded-sm bg-linear-to-br from-navy-950 via-navy-900 to-forest-900 p-5 text-cream-100 shadow-[0_40px_80px_-50px_rgba(10,36,61,0.8)] sm:p-6 lg:order-last lg:sticky lg:top-[110px]">
           <div className="pointer-events-none absolute -right-12 top-0 h-52 w-52 rounded-full bg-gold-500/15 blur-3xl" />
           <div className="relative">
             <span className={`${eyebrow} text-gold-300`}>YOUR SELECTION</span>

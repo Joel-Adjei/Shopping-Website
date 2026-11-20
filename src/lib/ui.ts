@@ -21,12 +21,12 @@ export const sectionTitle =
 export const displayTitle =
   'font-serif text-[clamp(3.4rem,6.2vw,5.5rem)] font-semibold leading-[1.01] tracking-[-0.055em] text-navy-900';
 
-export const btnPrimary = `group inline-flex min-h-12 items-center justify-center gap-4 rounded-full border border-forest-700/30 bg-linear-to-r from-forest-800 via-forest-700 to-navy-900 px-7 py-3.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-cream-50 shadow-[0_16px_34px_-18px_rgba(10,36,61,0.7)] transition-all duration-300 hover:from-navy-900 hover:via-navy-800 hover:to-forest-800 hover:shadow-[0_20px_44px_-18px_rgba(10,36,61,0.8)] active:scale-[0.985] disabled:pointer-events-none disabled:opacity-50 ${focusRing}`;
+export const btnPrimary = `ssc-primary group inline-flex min-h-12 items-center justify-center gap-4 rounded-full border border-forest-700/30 bg-linear-to-r from-forest-800 via-forest-700 to-navy-900 px-7 py-3.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-cream-50 shadow-[0_16px_34px_-18px_rgba(10,36,61,0.7)] transition-all duration-300 hover:from-navy-900 hover:via-navy-800 hover:to-forest-800 hover:shadow-[0_20px_44px_-18px_rgba(10,36,61,0.8)] active:scale-[0.985] disabled:pointer-events-none disabled:opacity-50 ${focusRing}`;
 
-export const btnGold = `group inline-flex min-h-12 items-center justify-center gap-4 rounded-full border border-gold-600/30 bg-linear-to-r from-gold-600 via-gold-500 to-gold-400 px-7 py-3.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-navy-950 shadow-[0_16px_34px_-18px_rgba(166,128,47,0.8)] transition-all duration-300 hover:from-navy-900 hover:via-navy-800 hover:to-forest-800 hover:text-cream-50 active:scale-[0.985] disabled:pointer-events-none disabled:opacity-50 ${focusRing}`;
+export const btnGold = `tone-dark group inline-flex min-h-12 items-center justify-center gap-4 rounded-full border border-gold-600/30 bg-linear-to-r from-gold-600 via-gold-500 to-gold-400 px-7 py-3.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-navy-950 shadow-[0_16px_34px_-18px_rgba(166,128,47,0.8)] transition-all duration-300 hover:from-navy-900 hover:via-navy-800 hover:to-forest-800 hover:text-cream-50 active:scale-[0.985] disabled:pointer-events-none disabled:opacity-50 ${focusRing}`;
 
 export const btnSecondary =
-  'inline-flex items-center justify-center gap-3 rounded-full border border-navy-900/15 bg-white/60 px-5 py-3 text-[10px] font-semibold uppercase tracking-[0.14em] text-navy-800 backdrop-blur-sm transition-colors hover:border-gold-500/60 hover:bg-cream-50 hover:text-forest-700 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold-500 disabled:pointer-events-none disabled:opacity-50';
+  'inline-flex items-center justify-center gap-3 rounded-full border border-navy-900/15 bg-cream-50/60 px-5 py-3 text-[10px] font-semibold uppercase tracking-[0.14em] text-navy-800 backdrop-blur-sm transition-colors hover:border-gold-500/60 hover:bg-cream-50 hover:text-forest-700 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold-500 disabled:pointer-events-none disabled:opacity-50';
 
 export const textLink =
   'group inline-flex items-center gap-2.5 border-b border-gold-500/50 pb-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-navy-800 transition-colors hover:border-forest-700 hover:text-forest-700 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold-500';
@@ -38,10 +38,10 @@ export const fieldLabel =
   'flex flex-col gap-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-navy-800/80';
 
 export const fieldInput =
-  'w-full min-w-0 rounded-sm border border-navy-900/10 bg-white/70 px-3.5 py-3 text-[12px] font-normal normal-case tracking-normal text-navy-900 outline-none transition placeholder:text-navy-900/35 focus:border-gold-500 focus:bg-white focus:ring-4 focus:ring-gold-500/10 disabled:cursor-not-allowed disabled:bg-cream-200 disabled:text-navy-900/40';
+  'w-full min-w-0 rounded-sm border border-navy-900/10 bg-cream-50/70 px-3.5 py-3 text-[12px] font-normal normal-case tracking-normal text-navy-900 outline-none transition placeholder:text-navy-900/35 focus:border-gold-500 focus:bg-cream-50 focus:ring-4 focus:ring-gold-500/10 disabled:cursor-not-allowed disabled:bg-cream-200 disabled:text-navy-900/40';
 
 export const panel =
-  'rounded-sm border border-navy-900/10 bg-white/65 shadow-[0_30px_70px_-60px_rgba(10,36,61,0.65)] backdrop-blur-sm';
+  'rounded-sm border border-navy-900/10 bg-cream-50/65 shadow-[0_30px_70px_-60px_rgba(10,36,61,0.65)] backdrop-blur-sm';
 
 export const cardTitle = 'font-serif text-[23px] font-semibold text-navy-900';
 

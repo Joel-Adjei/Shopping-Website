@@ -22,7 +22,7 @@ export default function CartDrawer() {
     <AnimatePresence>
       {open && (
         <motion.div
-          className="fixed inset-0 z-50 flex justify-end overflow-hidden bg-navy-950/50 backdrop-blur-[2px]"
+          className="fixed inset-0 z-50 flex justify-end overflow-hidden bg-[#030c17]/70 backdrop-blur-[2px]"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -114,7 +114,7 @@ export default function CartDrawer() {
                         </span>
                       )}
                       <strong className="mt-0.5 text-[10px] font-medium text-navy-900">{money(line.product.price * line.quantity)}</strong>
-                      <div className="mt-1 inline-flex items-center gap-3 rounded-full border border-navy-900/10 bg-white/50 px-2 py-0.5">
+                      <div className="mt-1 inline-flex items-center gap-3 rounded-full border border-navy-900/10 bg-cream-50/50 px-2 py-0.5">
                         <button className="grid place-items-center p-0.5 text-navy-800 transition-colors hover:text-forest-700" onClick={() => changeQuantity(key, -1)} aria-label="Decrease quantity">
                           <Minus size={13} />
                         </button>
