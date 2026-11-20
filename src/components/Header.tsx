@@ -28,11 +28,15 @@ export default function Header() {
   const openCart = useUIStore((state) => state.openCart);
   const search = useShopFilterStore((state) => state.search);
   const setSearch = useShopFilterStore((state) => state.setSearch);
+  const resetFilters = useShopFilterStore((state) => state.reset);
 
   // Search results live on the shop page, so typing from anywhere else takes you there.
   const onSearch = (value: string) => {
+    if (pathname !== "/shop") {
+      resetFilters();
+      navigate("/shop");
+    }
     setSearch(value);
-    if (pathname !== "/shop") navigate("/shop");
   };
 
   return (

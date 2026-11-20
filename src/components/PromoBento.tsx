@@ -39,6 +39,7 @@ function PromoTile({
   const categoryNames = useCatalogStore((state) => state.categoryNames);
   const products = useCatalogStore((state) => state.products);
   const setCategory = useShopFilterStore((state) => state.setCategory);
+  const resetFilters = useShopFilterStore((state) => state.reset);
 
   const openCategory = () => {
     const match = Object.entries(categoryNames).find(
@@ -49,6 +50,7 @@ function PromoTile({
     const hasPieces = categoryId
       ? products.some((product) => product.category_id === categoryId)
       : false;
+    resetFilters();
     setCategory(hasPieces ? categoryId! : ALL_CATEGORIES);
   };
 
@@ -96,7 +98,7 @@ function PromoTile({
 }
 
 export default function PromoBento() {
-  const setCategory = useShopFilterStore((state) => state.setCategory);
+  const resetFilters = useShopFilterStore((state) => state.reset);
 
   return (
     <section className="px-5 py-16 sm:px-[4%] sm:py-20 lg:px-[5.4%] lg:py-24">
@@ -121,7 +123,7 @@ export default function PromoBento() {
       >
         <Link
           to="/shop"
-          onClick={() => setCategory(ALL_CATEGORIES)}
+          onClick={resetFilters}
           className="group relative flex min-h-[460px] flex-col justify-end overflow-hidden rounded-sm bg-navy-900 p-7 sm:min-h-[540px] sm:p-9 lg:min-h-full lg:p-11"
         >
           <img

@@ -38,7 +38,9 @@ export const buildOrderWhatsAppUrl = (input: OrderWhatsAppInput): string | null 
   })
 
   const message = [
-    'Hello Stylish Steps Collection, I just placed an order.',
+    input.orderNumber
+      ? 'Hello Stylish Steps Collection, I just placed an order.'
+      : "Hello Stylish Steps Collection, I'd like to place this order.",
     '',
     input.orderNumber ? `Order: ${input.orderNumber}` : null,
     `Name: ${input.details.name}`,

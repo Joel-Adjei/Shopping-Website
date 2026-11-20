@@ -62,8 +62,11 @@ export default function SpotlightCarousel() {
 
   if (!items.length) return null;
 
-  const step = (direction: number) =>
-    center((active + direction + items.length) % items.length);
+  const step = (direction: number) => {
+    const next = (active + direction + items.length) % items.length;
+    setActive(next);
+    center(next);
+  };
 
   return (
     <section className="px-5 pb-4 pt-14 sm:px-[4%] sm:pt-16 lg:px-[5.4%] lg:pt-20">
@@ -104,6 +107,7 @@ export default function SpotlightCarousel() {
         <div
           ref={viewportRef}
           className="flex snap-x snap-mandatory gap-3 overflow-x-auto px-[7%] pb-2 [scrollbar-width:none] sm:gap-4 sm:px-[13%] lg:px-[16%] [&::-webkit-scrollbar]:hidden"
+          role="group"
           aria-roledescription="carousel"
           aria-label="Featured pieces"
         >

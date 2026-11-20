@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import NewsletterSection from "../components/NewsletterSection";
 import PersonaliseSection from "../components/PersonaliseSection";
-import DealsOfTheDay from "../components/DealsOfTheDay";
+import CustomisationSpotlight from "../components/CustomisationSpotlight";
 import SpotlightCarousel from "../components/SpotlightCarousel";
 import ProductCard from "../components/ProductCard";
 import PromoBento from "../components/PromoBento";
@@ -82,7 +82,7 @@ export default function HomePage() {
         </Reveal>
       </section>
 
-      <DealsOfTheDay />
+      <CustomisationSpotlight />
 
       <PersonaliseSection />
 
