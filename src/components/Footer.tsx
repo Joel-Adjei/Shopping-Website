@@ -9,7 +9,7 @@ export default function Footer() {
   const whatsapp = normalizeWhatsAppNumber(settings.whatsapp_number);
 
   return (
-    <footer className="relative overflow-hidden bg-linear-to-br from-navy-950 via-navy-900 to-forest-900 text-cream-100">
+    <footer className="tone-dark relative overflow-hidden bg-linear-to-br from-navy-950 via-navy-900 to-forest-900 text-cream-100">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,rgba(188,153,69,0.16),transparent_55%)]" />
       <div className="relative px-5 pb-5 pt-10 sm:px-[4%] lg:px-[5.4%]">
         <div className="grid gap-7 border-b border-white/10 pb-8 sm:grid-cols-2 sm:items-center lg:grid-cols-[1fr_1fr_1fr] lg:gap-4">

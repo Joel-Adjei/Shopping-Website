@@ -64,3 +64,170 @@
   --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
   --font-hero: "Playfair Display", Georgia, serif;
 }
+
+/* ---------------------------------------------------------------------------
+   "Noir" storefront theme.
+
+   The palette is remapped rather than rewritten, so every existing utility
+   follows the theme. Cream becomes the night surface; navy becomes the warm
+   ink; gold and forest stay as the brand accents (lightly lifted for legibility
+   on dark). Sections that are already dark opt out with `.tone-dark`.
+--------------------------------------------------------------------------- */
+[data-theme="noir"] {
+  color-scheme: dark;
+
+  --color-cream-50: #0e2439;
+  --color-cream-100: #08192b;
+  --color-cream-200: #102b46;
+  --color-cream-300: #17334f;
+
+  --color-navy-950: #fdf8ee;
+  --color-navy-900: #f5ecdd;
+  --color-navy-800: #e6d8c3;
+  --color-navy-700: #d0bda4;
+  --color-navy-600: #b7a287;
+
+  --color-gold-700: #e5c891;
+  --color-gold-600: #d8b676;
+  --color-gold-100: #3a2f1d;
+
+  --color-forest-500: #6da98d;
+  --color-forest-600: #7fb59a;
+  --color-forest-700: #9ccbb0;
+  --color-forest-800: #b6dcc7;
+
+  --color-red-900: #f2b7b0;
+}
+
+/* Components that are dark in both themes keep their original palette. */
+[data-theme="noir"] .tone-dark {
+  --color-cream-50: #fdfaf6;
+  --color-cream-100: #f9f4ed;
+  --color-cream-200: #f5eee6;
+  --color-cream-300: #ede2d6;
+
+  --color-navy-950: #071a2e;
+  --color-navy-900: #0a243d;
+  --color-navy-800: #152c4c;
+  --color-navy-700: #1e3a5f;
+  --color-navy-600: #2a4b72;
+
+  --color-gold-700: #8f6d26;
+  --color-gold-600: #a6802f;
+  --color-gold-500: #bc9945;
+  --color-gold-400: #cdaf68;
+  --color-gold-300: #dec996;
+  --color-gold-200: #eddfc0;
+  --color-gold-100: #f6eeda;
+
+  --color-forest-900: #173528;
+  --color-forest-800: #1f4434;
+  --color-forest-700: #2a4f3e;
+  --color-forest-600: #356450;
+  --color-forest-500: #437a62;
+
+  --color-red-900: #7f1d1d;
+}
+
+/* Primary actions turn to solid gold in the night theme. */
+[data-theme="noir"] .ssc-primary {
+  border-color: rgba(205, 175, 104, 0.55);
+  background-image: linear-gradient(100deg, #a6802f 0%, #c9a45c 46%, #e0c48b 100%);
+  color: #071a2e;
+  box-shadow: 0 18px 40px -22px rgba(188, 153, 69, 0.6);
+}
+[data-theme="noir"] .ssc-primary:hover {
+  background-image: linear-gradient(100deg, #cdaf68 0%, #e3c995 55%, #f1e2bf 100%);
+  color: #071a2e;
+  box-shadow: 0 22px 46px -20px rgba(205, 175, 104, 0.65);
+}
+
+/* Price slider thumbs read as polished gold on the night surface. */
+[data-theme="noir"] .ssc-range-thumb::-webkit-slider-thumb {
+  border-color: #0e2439;
+  background-color: #d8b676;
+}
+[data-theme="noir"] .ssc-range-thumb::-moz-range-thumb {
+  border-color: #0e2439;
+  background-color: #d8b676;
+}
+
+/* Promo tiles use bespoke hex backgrounds in light mode; give them a night tone. */
+[data-theme="noir"] .promo-card {
+  background-color: #0d253c;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+[data-theme="noir"] .promo-scrim {
+  background-image: linear-gradient(
+    to right,
+    #0d253c 0%,
+    rgba(13, 37, 60, 0.88) 55%,
+    rgba(13, 37, 60, 0) 100%
+  );
+}
+
+/* Shared starfield used by the spotlight and the page backdrop. */
+.ssc-star-field {
+  background-image:
+    radial-gradient(circle at 12% 22%, rgba(255, 255, 255, 0.55) 0 1px, transparent 1.6px),
+    radial-gradient(circle at 68% 72%, rgba(255, 255, 255, 0.35) 0 1px, transparent 1.4px),
+    radial-gradient(circle at 85% 18%, rgba(255, 255, 255, 0.5) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 40% 88%, rgba(255, 255, 255, 0.3) 0 1px, transparent 1.4px);
+  background-size: 240px 200px, 320px 260px, 200px 220px, 280px 240px;
+}
+
+.ssc-night-sky {
+  background-color: #071a2e;
+  background-image:
+    radial-gradient(circle at 12% 22%, rgba(255, 255, 255, 0.42) 0 1px, transparent 1.6px),
+    radial-gradient(circle at 68% 72%, rgba(255, 255, 255, 0.26) 0 1px, transparent 1.4px),
+    radial-gradient(circle at 85% 18%, rgba(255, 255, 255, 0.4) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 40% 88%, rgba(255, 255, 255, 0.22) 0 1px, transparent 1.4px),
+    radial-gradient(ellipse at 18% 0%, rgba(188, 153, 69, 0.16), transparent 55%),
+    radial-gradient(ellipse at 90% 8%, rgba(42, 79, 62, 0.38), transparent 60%),
+    radial-gradient(ellipse at 50% 120%, rgba(42, 79, 62, 0.24), transparent 55%),
+    linear-gradient(180deg, #071a2e 0%, #0a243d 48%, #071a2e 100%);
+  background-size:
+    240px 200px,
+    320px 260px,
+    200px 220px,
+    280px 240px,
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100%;
+}
+
+.ssc-night-sky::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 30% 35%, rgba(255, 255, 255, 0.6) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 75% 55%, rgba(236, 223, 192, 0.5) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 55% 15%, rgba(255, 255, 255, 0.45) 0 1px, transparent 1.4px);
+  background-size: 360px 320px, 300px 280px, 420px 360px;
+  opacity: 0.5;
+  animation: ssc-twinkle 9s ease-in-out infinite alternate;
+}
+
+@keyframes ssc-twinkle {
+  from {
+    opacity: 0.22;
+  }
+  to {
+    opacity: 0.65;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ssc-night-sky::after {
+    animation: none;
+    opacity: 0.4;
+  }
+}
+
+html.ssc-night {
+  background-color: #071a2e;
+  scrollbar-color: #2a4b72 #071a2e;
+}

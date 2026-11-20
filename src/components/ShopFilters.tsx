@@ -62,7 +62,7 @@ const countValues = (values: string[]) => {
 const priceLabel = (value: number) => `GHS ${value.toLocaleString("en-GH")}`;
 
 const thumbClasses =
-  "pointer-events-none absolute inset-x-0 top-1/2 z-10 h-5 w-full -translate-y-1/2 appearance-none bg-transparent [&::-webkit-slider-runnable-track]:h-[3px] [&::-webkit-slider-runnable-track]:bg-transparent [&::-moz-range-track]:h-[3px] [&::-moz-range-track]:bg-transparent [&::-webkit-slider-thumb]:pointer-events-auto [&::-webkit-slider-thumb]:h-3.5 [&::-webkit-slider-thumb]:w-3.5 [&::-webkit-slider-thumb]:cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-cream-50 [&::-webkit-slider-thumb]:bg-forest-700 [&::-webkit-slider-thumb]:shadow-[0_1px_4px_rgba(10,36,61,0.35)] [&::-moz-range-thumb]:pointer-events-auto [&::-moz-range-thumb]:h-3.5 [&::-moz-range-thumb]:w-3.5 [&::-moz-range-thumb]:cursor-pointer [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-2 [&::-moz-range-thumb]:border-cream-50 [&::-moz-range-thumb]:bg-forest-700";
+  "ssc-range-thumb pointer-events-none absolute inset-x-0 top-1/2 z-10 h-5 w-full -translate-y-1/2 appearance-none bg-transparent [&::-webkit-slider-runnable-track]:h-[3px] [&::-webkit-slider-runnable-track]:bg-transparent [&::-moz-range-track]:h-[3px] [&::-moz-range-track]:bg-transparent [&::-webkit-slider-thumb]:pointer-events-auto [&::-webkit-slider-thumb]:h-3.5 [&::-webkit-slider-thumb]:w-3.5 [&::-webkit-slider-thumb]:cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-cream-50 [&::-webkit-slider-thumb]:bg-forest-700 [&::-webkit-slider-thumb]:shadow-[0_1px_4px_rgba(10,36,61,0.35)] [&::-moz-range-thumb]:pointer-events-auto [&::-moz-range-thumb]:h-3.5 [&::-moz-range-thumb]:w-3.5 [&::-moz-range-thumb]:cursor-pointer [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:border-2 [&::-moz-range-thumb]:border-cream-50 [&::-moz-range-thumb]:bg-forest-700";
 
 function FilterGroup({ title, children }: { title: string; children: ReactNode }) {
   return (
@@ -104,7 +104,7 @@ function CheckRow({
           className={`grid h-3.5 w-3.5 shrink-0 place-items-center rounded-[2px] border transition-colors ${
             checked
               ? "border-forest-700 bg-forest-700 text-cream-50"
-              : "border-navy-900/25 bg-white/60"
+              : "border-navy-900/25 bg-cream-50/60"
           }`}
         >
           {checked && <Check size={10} strokeWidth={3} />}
@@ -386,7 +386,7 @@ export default function ShopFilters({
                   className={`min-w-[34px] rounded-sm border px-2 py-1.5 text-[9px] transition-colors ${focusRing} ${
                     selected
                       ? "border-navy-900 bg-navy-900 text-cream-50"
-                      : "border-navy-900/15 bg-white/50 text-navy-900/65 hover:border-gold-500/60 hover:text-navy-900"
+                      : "border-navy-900/15 bg-cream-50/50 text-navy-900/65 hover:border-gold-500/60 hover:text-navy-900"
                   }`}
                 >
                   {item.value}
@@ -455,7 +455,7 @@ export default function ShopFilters({
         <button
           type="button"
           onClick={onDone}
-          className={`mt-5 w-full rounded-full bg-linear-to-r from-navy-900 via-navy-800 to-forest-800 px-5 py-3 text-[9px] font-semibold uppercase tracking-[0.16em] text-cream-50 transition-opacity hover:opacity-90 ${focusRing}`}
+          className={`ssc-primary mt-5 w-full rounded-full bg-linear-to-r from-navy-900 via-navy-800 to-forest-800 px-5 py-3 text-[9px] font-semibold uppercase tracking-[0.16em] text-cream-50 transition-opacity hover:opacity-90 ${focusRing}`}
         >
           Show {resultCount ?? 0} piece{(resultCount ?? 0) === 1 ? "" : "s"}
         </button>

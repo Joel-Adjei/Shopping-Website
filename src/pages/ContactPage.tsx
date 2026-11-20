@@ -52,8 +52,8 @@ function Channel({ icon: Icon, label, value, href, external }: ChannelProps) {
     </>
   );
 
-  const className = `group flex items-center gap-3.5 rounded-sm border border-navy-900/10 bg-white/50 p-3 transition-colors ${
-    href ? `hover:border-gold-500/50 hover:bg-white ${focusRing}` : ""
+  const className = `group flex items-center gap-3.5 rounded-sm border border-navy-900/10 bg-cream-50/50 p-3 transition-colors ${
+    href ? `hover:border-gold-500/50 hover:bg-cream-50 ${focusRing}` : ""
   }`;
 
   if (!href) return <div className={className}>{body}</div>;
@@ -106,6 +106,14 @@ export default function ContactPage() {
   return (
     <main>
       <section className="relative overflow-hidden bg-linear-to-b from-cream-50 via-cream-100 to-cream-100 px-5 pb-14 pt-14 sm:px-[4%] sm:pb-16 sm:pt-20 lg:px-[5.4%] lg:pb-20 lg:pt-24">
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+          <img
+            src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1600&q=85"
+            alt=""
+            className="h-full w-full object-cover object-[70%_28%] opacity-25"
+          />
+          <div className="absolute inset-0 bg-linear-to-r from-cream-100 via-cream-100/90 to-cream-100/45" />
+        </div>
         <div className="pointer-events-none absolute -left-24 top-6 h-80 w-80 rounded-full bg-gold-200/40 blur-3xl" />
         <div className="pointer-events-none absolute -right-24 bottom-0 h-96 w-96 rounded-full bg-forest-600/10 blur-3xl" />
         <div className="relative mx-auto max-w-[1200px]">
@@ -131,7 +139,7 @@ export default function ContactPage() {
               {["Based in Accra", "Nationwide delivery", "Custom orders welcome"].map((chip) => (
                 <span
                   key={chip}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-navy-900/10 bg-white/60 px-3 py-1.5 text-[9px] font-medium uppercase tracking-[0.1em] text-navy-800/75 backdrop-blur-sm"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-navy-900/10 bg-cream-50/60 px-3 py-1.5 text-[9px] font-medium uppercase tracking-[0.1em] text-navy-800/75 backdrop-blur-sm"
                 >
                   <span className="h-1 w-1 rounded-full bg-gold-500" />
                   {chip}
@@ -259,7 +267,7 @@ export default function ContactPage() {
             </Reveal>
 
             <Reveal
-              className="relative overflow-hidden rounded-sm bg-linear-to-br from-navy-950 via-navy-900 to-forest-900 p-5 text-cream-100 sm:p-6"
+              className="tone-dark relative overflow-hidden rounded-sm bg-linear-to-br from-navy-950 via-navy-900 to-forest-900 p-5 text-cream-100 sm:p-6"
               delay={0.16}
             >
               <div className="pointer-events-none absolute -bottom-16 -right-10 h-48 w-48 rounded-full bg-gold-500/15 blur-3xl" />

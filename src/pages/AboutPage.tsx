@@ -168,7 +168,7 @@ export default function AboutPage() {
                   (chip) => (
                     <span
                       key={chip}
-                      className="inline-flex items-center gap-1.5 rounded-full border border-navy-900/10 bg-white/60 px-3 py-1.5 text-[9px] font-medium uppercase tracking-[0.1em] text-navy-800/75 backdrop-blur-sm"
+                      className="inline-flex items-center gap-1.5 rounded-full border border-navy-900/10 bg-cream-50/60 px-3 py-1.5 text-[9px] font-medium uppercase tracking-[0.1em] text-navy-800/75 backdrop-blur-sm"
                     >
                       <Sparkles size={11} className="text-gold-600" />
                       {chip}
@@ -202,7 +202,7 @@ export default function AboutPage() {
               {gallery.map((item, index) => (
                 <motion.figure
                   key={item.label}
-                  className={`group relative overflow-hidden bg-cream-300 ${
+                  className={`tone-dark group relative overflow-hidden bg-cream-300 ${
                     index % 2 === 1 ? "lg:translate-y-7" : ""
                   }`}
                   initial={{ opacity: 0, y: 24 }}
@@ -223,7 +223,7 @@ export default function AboutPage() {
                 </motion.figure>
               ))}
             </div>
-            <span className="absolute -bottom-5 left-1/2 hidden -translate-x-1/2 rotate-[-2deg] rounded-full bg-navy-900 px-4 py-2 text-[8px] font-semibold uppercase tracking-[0.2em] text-gold-300 shadow-[0_18px_40px_-20px_rgba(10,36,61,0.9)] lg:inline-flex">
+            <span className="tone-dark absolute -bottom-5 left-1/2 hidden -translate-x-1/2 rotate-[-2deg] rounded-full bg-navy-900 px-4 py-2 text-[8px] font-semibold uppercase tracking-[0.2em] text-gold-300 shadow-[0_18px_40px_-20px_rgba(10,36,61,0.9)] lg:inline-flex">
               Collection / Customize
             </span>
           </div>
@@ -267,7 +267,7 @@ export default function AboutPage() {
         </motion.div>
 
         <Reveal className="mt-6">
-          <div className="relative overflow-hidden rounded-sm bg-linear-to-r from-navy-950 via-navy-900 to-forest-900 px-5 py-6 text-cream-100 sm:px-7 sm:py-7">
+          <div className="tone-dark relative overflow-hidden rounded-sm bg-linear-to-r from-navy-950 via-navy-900 to-forest-900 px-5 py-6 text-cream-100 sm:px-7 sm:py-7">
             <div className="pointer-events-none absolute -right-10 top-0 h-48 w-48 rounded-full bg-gold-500/20 blur-3xl" />
             <div className="relative flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
               <div>
@@ -295,7 +295,7 @@ export default function AboutPage() {
 
       <section className="grid lg:grid-cols-2">
         <motion.div
-          className="relative overflow-hidden bg-linear-to-br from-navy-950 via-navy-900 to-forest-900 px-6 py-16 text-cream-100 sm:px-[8%] lg:px-[11%] lg:py-20"
+          className="tone-dark relative overflow-hidden bg-linear-to-br from-navy-950 via-navy-900 to-forest-900 px-6 py-16 text-cream-100 sm:px-[8%] lg:px-[11%] lg:py-20"
           initial={{ opacity: 0, y: 26 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.25 }}
@@ -347,7 +347,7 @@ export default function AboutPage() {
         </motion.div>
 
         <motion.div
-          className="relative min-h-[340px] overflow-hidden bg-cream-300 sm:min-h-[440px] lg:min-h-[560px]"
+          className="tone-dark relative min-h-[340px] overflow-hidden bg-cream-300 sm:min-h-[440px] lg:min-h-[560px]"
           initial={{ opacity: 0, x: 26 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, amount: 0.25 }}
@@ -411,7 +411,7 @@ export default function AboutPage() {
           </div>
         </motion.div>
         <motion.div
-          className="relative min-h-[320px] overflow-hidden bg-cream-300 sm:min-h-[420px] lg:min-h-[480px]"
+          className="tone-dark relative min-h-[320px] overflow-hidden bg-cream-300 sm:min-h-[420px] lg:min-h-[480px]"
           initial={{ opacity: 0, x: 26 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, amount: 0.25 }}
@@ -458,7 +458,7 @@ export default function AboutPage() {
         </motion.div>
       </section>
 
-      <Reveal className="relative mx-5 my-12 overflow-hidden rounded-sm bg-linear-to-br from-navy-950 via-navy-900 to-forest-900 px-6 py-16 text-center text-cream-100 sm:mx-[4%] lg:mx-[5.4%] lg:py-20">
+      <Reveal className="tone-dark relative mx-5 my-12 overflow-hidden rounded-sm bg-linear-to-br from-navy-950 via-navy-900 to-forest-900 px-6 py-16 text-center text-cream-100 sm:mx-[4%] lg:mx-[5.4%] lg:py-20">
         <div className="pointer-events-none absolute left-1/2 top-0 h-72 w-[34rem] -translate-x-1/2 rounded-full bg-gold-500/15 blur-3xl" />
         <div className="relative">
           <span className={`${eyebrow} justify-center text-gold-300`}>READY WHEN YOU ARE</span>

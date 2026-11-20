@@ -43,7 +43,7 @@ export default function ProductCard({ product, index }: { product: Product; inde
           alt={product.name}
           loading="lazy"
         />
-        <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-navy-950/25 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+        <div className="tone-dark pointer-events-none absolute inset-0 bg-linear-to-t from-navy-950/25 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
         {/* Covers the image; the buttons below sit above it, so they stay clickable. */}
         <Link to={`/product/${product.slug}`} className="absolute inset-0 z-0" aria-label={`View ${product.name}`} />
         {product.compare_at_price && (
@@ -52,7 +52,7 @@ export default function ProductCard({ product, index }: { product: Product; inde
           </span>
         )}
         {product.customization_enabled && (
-          <span className="absolute left-3 top-11 z-10 bg-linear-to-r from-gold-600 via-gold-500 to-gold-400 px-2.5 py-1.5 text-[8px] font-semibold uppercase tracking-[0.12em] text-navy-950 shadow-sm">
+          <span className="tone-dark absolute left-3 top-11 z-10 bg-linear-to-r from-gold-600 via-gold-500 to-gold-400 px-2.5 py-1.5 text-[8px] font-semibold uppercase tracking-[0.12em] text-navy-950 shadow-sm">
             Personalise
           </span>
         )}

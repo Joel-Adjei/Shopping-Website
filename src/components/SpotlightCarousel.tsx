@@ -87,7 +87,7 @@ export default function SpotlightCarousel() {
           <>
             <button
               type="button"
-              className={`absolute left-3 top-1/2 z-20 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-cream-50/95 text-navy-900 shadow-[0_10px_30px_-12px_rgba(7,26,46,0.65)] backdrop-blur-sm transition-colors hover:bg-gold-300 sm:left-6 sm:h-11 sm:w-11 ${focusRing}`}
+              className={`tone-dark absolute left-3 top-1/2 z-20 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-cream-50/95 text-navy-900 shadow-[0_10px_30px_-12px_rgba(7,26,46,0.65)] backdrop-blur-sm transition-colors hover:bg-gold-300 sm:left-6 sm:h-11 sm:w-11 ${focusRing}`}
               onClick={() => step(-1)}
               aria-label="Previous spotlight piece"
             >
@@ -95,7 +95,7 @@ export default function SpotlightCarousel() {
             </button>
             <button
               type="button"
-              className={`absolute right-3 top-1/2 z-20 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-cream-50/95 text-navy-900 shadow-[0_10px_30px_-12px_rgba(7,26,46,0.65)] backdrop-blur-sm transition-colors hover:bg-gold-300 sm:right-6 sm:h-11 sm:w-11 ${focusRing}`}
+              className={`tone-dark absolute right-3 top-1/2 z-20 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full bg-cream-50/95 text-navy-900 shadow-[0_10px_30px_-12px_rgba(7,26,46,0.65)] backdrop-blur-sm transition-colors hover:bg-gold-300 sm:right-6 sm:h-11 sm:w-11 ${focusRing}`}
               onClick={() => step(1)}
               aria-label="Next spotlight piece"
             >
@@ -119,7 +119,7 @@ export default function SpotlightCarousel() {
             return (
               <div
                 key={product.id}
-                className="relative h-[380px] shrink-0 basis-[86%] snap-center overflow-hidden rounded-sm border border-navy-900/10 bg-navy-950 sm:h-[430px] sm:basis-[74%] lg:h-[470px] lg:basis-[68%]"
+                className="tone-dark relative h-[380px] shrink-0 basis-[86%] snap-center overflow-hidden rounded-sm border border-navy-900/10 bg-navy-950 sm:h-[430px] sm:basis-[74%] lg:h-[470px] lg:basis-[68%]"
               >
                 <img
                   className="absolute inset-0 h-full w-full object-cover object-center"

@@ -1,8 +1,9 @@
-import { CircleUserRound, Menu, Search, ShoppingBag, X } from "lucide-react";
+import { CircleUserRound, Menu, Moon, Search, ShoppingBag, Sun, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { selectCartCount, useCartStore } from "../stores/useCartStore";
 import { useShopFilterStore } from "../stores/useShopFilterStore";
+import { useThemeStore } from "../stores/useThemeStore";
 import { useUIStore } from "../stores/useUIStore";
 import { logos } from "../assets/asset";
 import { iconButton } from "../lib/ui";
@@ -29,6 +30,9 @@ export default function Header() {
   const search = useShopFilterStore((state) => state.search);
   const setSearch = useShopFilterStore((state) => state.setSearch);
   const resetFilters = useShopFilterStore((state) => state.reset);
+  const theme = useThemeStore((state) => state.theme);
+  const toggleTheme = useThemeStore((state) => state.toggleTheme);
+  const isAdmin = pathname.startsWith("/admin");
 
   // Search results live on the shop page, so typing from anywhere else takes you there.
   const onSearch = (value: string) => {
@@ -110,6 +114,18 @@ export default function Header() {
           >
             <Search size={19} />
           </motion.button>
+          {!isAdmin && (
+            <motion.button
+              className={iconButton}
+              aria-label={theme === "noir" ? "Switch to light mode" : "Switch to premium night mode"}
+              aria-pressed={theme === "noir"}
+              title={theme === "noir" ? "Light mode" : "Premium night mode"}
+              onClick={toggleTheme}
+              whileTap={{ scale: 0.9 }}
+            >
+              {theme === "noir" ? <Sun size={19} /> : <Moon size={19} />}
+            </motion.button>
+          )}
           <motion.button
             className={`${iconButton} hidden sm:grid`}
             aria-label="Admin sign in"
@@ -161,8 +177,8 @@ export default function Header() {
                   className={({ isActive }) =>
                     `block rounded-lg px-3 py-3 text-[11px] font-medium uppercase tracking-[0.18em] transition-colors ${
                       isActive
-                        ? "bg-white/70 text-forest-700"
-                        : "text-navy-800/75 hover:bg-white/50 hover:text-forest-700"
+                        ? "bg-cream-50/70 text-forest-700"
+                        : "text-navy-800/75 hover:bg-cream-50/50 hover:text-forest-700"
                     }`
                   }
                 >
